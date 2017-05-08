@@ -2,6 +2,7 @@ package asgn2Customers;
 
 
 import asgn2Exceptions.CustomerException;
+import asgn2Customers.Customer;
 
 /**
  * A class that instantiates the subclasses of asgn2Customers.Customer using the Factory Method pattern. 
@@ -13,7 +14,7 @@ import asgn2Exceptions.CustomerException;
  */
 
 public class CustomerFactory {
-
+	
 	/**
 	 * A method that uses the Factory Method pattern to produce an instance of one of the asgn2Customers.Customer subclasses. 
 	 * Subclasses are created using the customerCode. All valid customer codes are listed in Section 5.3 of the Assignment Specification.
@@ -28,6 +29,26 @@ public class CustomerFactory {
 	 * @throws CustomerException if the customerCode is not one of the three valid codes listed in Section 5.3 of the Assignment Specification. 
 	 */
 	public static Customer getCustomer(String customerCode, String name, String mobileNumber, int locationX,  int locationY) throws CustomerException{
-		// TO DO
+		
+		Customer customer;
+		String customerType;
+		
+		if (customerCode != "PUC" && customerCode != "DVC" && customerCode != "DNC") {
+			throw new CustomerException("Customer delivery code is invalid");
+		} else {
+			switch (customerCode) {
+				case "PUC" : customerType = "Pick up customer";
+				case "DVC" : customerType = "Delivery by driver";
+				case "DNC" : customerType = "Delivery by drone";
+			}
+		}
+		
+		if (!mobileNumber.matches("0[0-9]{9}")) {
+			throw new CustomerException("Phone number must be 10 digits and start with 0");
+		}
+	
+		customer = new Customer(name, mobileNumber, locationX, locationY, customerType);
+		return customer;
+		
 	}
 }
