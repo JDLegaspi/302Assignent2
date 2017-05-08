@@ -36,6 +36,27 @@ public class MargheritaPizza extends Pizza {
 	 */
 	public MargheritaPizza(int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException {
 		// TO DO
+		//TO FIX 
+			int hour = orderTime.getHour();
+			int dropHour = orderTime.getHour();
+			if(quantity < 1 || quantity > 10 ){
+				throw new PizzaException ("Too little or to many Pizza- Must be over 1 and under 10");
+			}else if  (hour < 19 || hour > 23) {
+				throw new PizzaException ("You are ordeirng when we are not open, please come back betwrrn 7-11pm");	
+			}else if ((dropHour - hour)< 1){
+				throw new PizzaException ("Pizza over an hour old, Thrown out. ");
+				
+			}
+			
 	}
-
 }
+
+		/*  Throw Exceptions when 
+		 * The time is before 7 PM 
+		 * The Time is after 11 PM 
+		 * quantity under 1 
+		 * quantity over 10
+		 * if deliver time is over an hour 
+		 * */ 
+	
+
