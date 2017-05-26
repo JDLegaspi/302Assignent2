@@ -13,6 +13,11 @@ import java.time.LocalTime;
  *
  */
 public abstract class Pizza  {
+	private int quantity;
+	private LocalTime orderTime;
+	private LocalTime deliveryTime;
+	private double price; 
+	private String type;
 	
 	/**
 	 *  This class represents a pizza produced at the Pizza Palace restaurant.  A detailed description of the class's fields
@@ -32,7 +37,16 @@ public abstract class Pizza  {
 	 * 
 	 */
 	public Pizza(int quantity, LocalTime orderTime, LocalTime deliveryTime, String type, double price) throws PizzaException{
-		// TO DO	
+		// TO DO
+		if(quantity< 10 || quantity >1){
+			throw new PizzaException("not enough pizzas");
+		} else {
+			this.quantity = quantity; 
+		//quantity
+		}
+		this.orderTime = orderTime;
+		this.deliveryTime = deliveryTime;
+		this.price = price; 
 	}
 
 	/**
@@ -42,6 +56,7 @@ public abstract class Pizza  {
 	 * <P> POST: The cost field is set to sum of the Pizzas's toppings
 	 */
 	public final void calculateCostPerPizza(){
+		
 		// TO DO
 	}
 	
@@ -51,6 +66,7 @@ public abstract class Pizza  {
 	 */
 	public final double getCostPerPizza(){
 		// TO DO
+		// not sure 
 	}
 
 	/**
@@ -58,7 +74,8 @@ public abstract class Pizza  {
 	 * @return The amount that an individual pizza is sold to the customer.
 	 */
 	public final double getPricePerPizza(){
-		// TO DO
+		// TO DO 
+		//not sure 
 	}
 
 	/**
@@ -66,7 +83,9 @@ public abstract class Pizza  {
 	 * @return The amount that the entire order costs to make, taking into account the type and quantity of pizzas. 
 	 */
 	public final double getOrderCost(){
+		// cost of pizza x quantity. 
 		// TO DO
+	
 	}
 	
 	/**
@@ -75,6 +94,9 @@ public abstract class Pizza  {
 	 */
 	public final double getOrderPrice(){
 		// TO DO
+		return this.price ; 
+		
+		
 	}
 	
 	
@@ -102,6 +124,7 @@ public abstract class Pizza  {
 	 */
 	public final int getQuantity(){
 		// TO DO
+		return this.quantity;
 	}
 
 	/**
@@ -111,6 +134,7 @@ public abstract class Pizza  {
 	 */
 	public final String getPizzaType(){
 		// TO DO
+		return this.type;
 	}
 
 

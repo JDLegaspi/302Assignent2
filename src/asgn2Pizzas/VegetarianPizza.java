@@ -32,7 +32,20 @@ public class VegetarianPizza extends Pizza {
 	 *
 	 */
 	public VegetarianPizza(int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException {
-		// TO DO
+		
+		int hour = orderTime.getHour();
+		int dropHour = orderTime.getHour();
+		if(quantity < 1 || quantity > 10 ){
+			throw new PizzaException ("Too little or too many Pizza- Must be over 1 and under 10");
+		}else if  (hour < 19 || hour > 23) {
+			throw new PizzaException ("You are ordering when we are not open, please come back between 7-11pm");	
+		}else if ((dropHour - hour)< 1){
+			throw new PizzaException ("Pizza over an hour old, Thrown out. ");
+			
+			}
+		
+		}
+		
+		
 	}
 
-}
