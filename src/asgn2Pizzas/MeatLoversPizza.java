@@ -14,7 +14,7 @@ import asgn2Exceptions.PizzaException;
  *
  */
 public class MeatLoversPizza extends Pizza {
-	private static final double COST = 10.00; 
+	private static final double COST = 12.00; 
 	private static final String IDENTITY = "MeatLovers";
 
 	/**

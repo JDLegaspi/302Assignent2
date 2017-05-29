@@ -21,6 +21,7 @@ public abstract class Pizza  {
 	private double price; 
 	private String type;
 	
+	protected double cost; 
 	protected ArrayList<PizzaTopping> listOfToppings;
 	
 	/**
@@ -42,16 +43,22 @@ public abstract class Pizza  {
 	 */
 	public Pizza(int quantity, LocalTime orderTime, LocalTime deliveryTime, String type, double price) throws PizzaException{
 		// TO DO
-		if(quantity< 10 || quantity >1){
+		
+		// CHAGNE TO  TRY AND CATCH 
+	/*	if(quantity< 10 || quantity >1){
 			throw new PizzaException("not enough pizzas");
 		} else {
 			this.quantity = quantity; 
 		//quantity
 		}
+		
+		if( orderTime < 19:00 || orderTime > 23:00){
+			throw new PizzaException("not enough pizzas");
+		}
 		this.orderTime = orderTime;
 		this.deliveryTime = deliveryTime;
 		this.price = price; 
-	}
+	}*/
 
 	/**
 	 * Calculates how much a pizza would cost to make calculated from its toppings.
@@ -63,12 +70,23 @@ public abstract class Pizza  {
 		
 		// TO DO
 	}
+		this.cost = 0; 
+		
+		for(PizzaTopping Value : listOfToppings){
+			this.cost = Value.getCost() + this.cost;
+		}
+	
+	
+	}
+			
+	
 	
 	/**
 	 * Returns the amount that an individual pizza costs to make.
 	 * @return The amount that an individual pizza costs to make.
 	 */
 	public final double getCostPerPizza(){
+		
 		// TO DO
 		// not sure 
 	}
@@ -87,10 +105,7 @@ public abstract class Pizza  {
 	 * @return The amount that the entire order costs to make, taking into account the type and quantity of pizzas. 
 	 */
 	public final double getOrderCost(){
-		int orderCost; 
-		// cost of pizza x quantity. 
-		// TO DO
-	
+		
 	}
 	
 	/**
