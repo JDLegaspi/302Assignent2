@@ -30,25 +30,27 @@ public class CustomerFactory {
 	 */
 	public static Customer getCustomer(String customerCode, String name, String mobileNumber, int locationX,  int locationY) throws CustomerException{
 		
-		Customer customer;
-		String customerType;
-		
-		if (customerCode != "PUC" && customerCode != "DVC" && customerCode != "DNC") {
-			throw new CustomerException("Customer delivery code is invalid");
-		} else {
-			switch (customerCode) {
-				case "PUC" : customerType = "Pick up customer";
-				case "DVC" : customerType = "Delivery by driver";
-				case "DNC" : customerType = "Delivery by drone";
-			}
-		}
-		
 		if (!mobileNumber.matches("0[0-9]{9}")) {
 			throw new CustomerException("Phone number must be 10 digits and start with 0");
 		}
-	
-		customer = new Customer(name, mobileNumber, locationX, locationY, customerType);
-		return customer;
+
+		if (customerCode != "PUC" && customerCode != "DVC" && customerCode != "DNC") {
+			throw new CustomerException("Customer delivery code is invalid");
+		} else {
+			
+			if (customerCode == "PUC") {
+				PickUpCustomer customer = new PickUpCustomer(name, mobileNumber, locationX, locationY);
+				return customer;
+			} else if (customerCode == "DVC") {
+				DriverDeliveryCustomer customer = new DriverDeliveryCustomer(name, mobileNumber, locationX, locationY);
+				return customer;
+			} else {
+				DroneDeliveryCustomer customer = new DroneDeliveryCustomer(name, mobileNumber, locationX, locationY);
+				return customer;
+			}
+			
+			
+		}
 		
 	}
 }
