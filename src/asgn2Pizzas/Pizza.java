@@ -1,6 +1,8 @@
 package asgn2Pizzas;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import asgn2Exceptions.PizzaException;
 
 
 /**
@@ -18,6 +20,8 @@ public abstract class Pizza  {
 	private LocalTime deliveryTime;
 	private double price; 
 	private String type;
+	
+	protected ArrayList<PizzaTopping> listOfToppings;
 	
 	/**
 	 *  This class represents a pizza produced at the Pizza Palace restaurant.  A detailed description of the class's fields
@@ -83,6 +87,7 @@ public abstract class Pizza  {
 	 * @return The amount that the entire order costs to make, taking into account the type and quantity of pizzas. 
 	 */
 	public final double getOrderCost(){
+		int orderCost; 
 		// cost of pizza x quantity. 
 		// TO DO
 	
