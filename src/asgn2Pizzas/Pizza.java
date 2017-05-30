@@ -42,23 +42,16 @@ public abstract class Pizza  {
 	 * 
 	 */
 	public Pizza(int quantity, LocalTime orderTime, LocalTime deliveryTime, String type, double price) throws PizzaException{
-		// TO DO
 		
-		// CHAGNE TO  TRY AND CATCH 
-	/*	if(quantity< 10 || quantity >1){
-			throw new PizzaException("not enough pizzas");
-		} else {
-			this.quantity = quantity; 
-		//quantity
-		}
+		//TODO: Exceptions
 		
-		if( orderTime < 19:00 || orderTime > 23:00){
-			throw new PizzaException("not enough pizzas");
-		}
+		this.quantity = quantity;
 		this.orderTime = orderTime;
 		this.deliveryTime = deliveryTime;
-		this.price = price; 
-	}*/
+		this.type = type;
+		this.price = price;
+		
+	}
 
 	/**
 	 * Calculates how much a pizza would cost to make calculated from its toppings.
@@ -68,8 +61,6 @@ public abstract class Pizza  {
 	 */
 	public final void calculateCostPerPizza(){
 		
-		// TO DO
-	}
 		this.cost = 0; 
 		
 		for(PizzaTopping Value : listOfToppings){
@@ -87,8 +78,7 @@ public abstract class Pizza  {
 	 */
 	public final double getCostPerPizza(){
 		
-		// TO DO
-		// not sure 
+		return this.cost;
 	}
 
 	/**
@@ -96,8 +86,9 @@ public abstract class Pizza  {
 	 * @return The amount that an individual pizza is sold to the customer.
 	 */
 	public final double getPricePerPizza(){
-		// TO DO 
-		//not sure 
+
+		return this.price;
+
 	}
 
 	/**
@@ -105,6 +96,8 @@ public abstract class Pizza  {
 	 * @return The amount that the entire order costs to make, taking into account the type and quantity of pizzas. 
 	 */
 	public final double getOrderCost(){
+	
+		return this.cost * this.quantity;
 		
 	}
 	
@@ -113,8 +106,8 @@ public abstract class Pizza  {
 	 * @return The amount that the entire order is sold to the customer, taking into account the type and quantity of pizzas. 
 	 */
 	public final double getOrderPrice(){
-		// TO DO
-		return this.price ; 
+		
+		return this.price * this.quantity; 
 		
 		
 	}
@@ -125,7 +118,9 @@ public abstract class Pizza  {
 	 * @return  Returns the profit made by the restaurant on the order which is the order price minus the order cost.
 	 */
 	public final double getOrderProfit(){
-		// TO DO
+
+		return ((this.price * this.quantity) - (this.cost * this.quantity));
+
 	}
 	
 
@@ -135,7 +130,15 @@ public abstract class Pizza  {
 	 * @return Returns  true if the instance of Pizza contains the specified topping and false otherwise.
 	 */
 	public final boolean containsTopping(PizzaTopping topping){
-		// TO DO
+		
+		for (PizzaTopping queryTopping : listOfToppings) {
+			if (topping == queryTopping) {
+				return true;
+			}
+		}
+		
+		return false;
+
 	}
 	
 	/**
@@ -143,7 +146,6 @@ public abstract class Pizza  {
 	 * @return the quantity of pizzas ordered. 
 	 */
 	public final int getQuantity(){
-		// TO DO
 		return this.quantity;
 	}
 
@@ -153,7 +155,6 @@ public abstract class Pizza  {
 	 * @return A human understandable description of the Pizza's type.
 	 */
 	public final String getPizzaType(){
-		// TO DO
 		return this.type;
 	}
 
