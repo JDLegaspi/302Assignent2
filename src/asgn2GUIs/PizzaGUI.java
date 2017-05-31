@@ -43,6 +43,10 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	private JPanel PanelThree;
 	
 	
+	private JLabel HeadingOne ;
+	private JLabel HeadingTwo;
+	
+	
 	private JLabel CustomerNameLabel;
 	private JLabel CustomerMobileLabel;
 	private JLabel CustomerTypeLabel;
@@ -113,12 +117,17 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		PanelThree.setLayout(new BoxLayout(PanelThree, BoxLayout.Y_AXIS));
 		
 		//Lables  For Customer 
+		
+		HeadingOne = new JLabel("Customer Information");
+		HeadingTwo = new JLabel("Customer Resutlts");
+		
 		CustomerNameLabel = new JLabel("CustomerNameLabel");
 		CustomerMobileLabel = new JLabel("CustomerMobileLabel");
 		CustomerTypeLabel = new JLabel("CustomerTypeLabelE");
 		CustomerLocationLabel = new JLabel("CustomerTypeLabel");
 		CustomerDistanceLabel = new JLabel("CustomerDistanceLabel");
 
+		PanelOne.add(HeadingOne);
 		PanelOne.add(CustomerNameLabel);
 		PanelOne.add(CustomerMobileLabel);
 		PanelOne.add(CustomerTypeLabel);
@@ -133,6 +142,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		PizzaOrderCostLabel = new JLabel("PizzaOrderCostLabel");
 		PizzaOrderProfitLabel = new JLabel("PizzaOrderProfitLabel");
 
+		
 		PanelOne.add(PizzaTypeLabel);
 		PanelOne.add(PizzaQuantityLabel);
 		PanelOne.add(PizzaOrderPriceLabel);
@@ -147,6 +157,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		ResultCustomerLocationLabel = new JLabel("	ResultCustomerTypeLabel");
 		ResultCustomerDistanceLabel = new JLabel("	ResultCustomerDistanceLabel");
 
+		PanelTwo.add(HeadingTwo);
 		PanelTwo.add(ResultCustomerNameLabel);
 		PanelTwo.add(ResultCustomerMobileLabel);
 		PanelTwo.add(ResultCustomerTypeLabel);
@@ -188,7 +199,8 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		 PanelThree.add(PreviousButton);
 		 PreviousButton.addActionListener(this);
 		 
-		 
+		 HeadingOne.setFont(new Font("Comic Sans ms",Font.BOLD,16));
+		 HeadingTwo.setFont(new Font("Comic Sans ms",Font.BOLD,16));
 		 
 		}
 		
@@ -205,6 +217,8 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		JPanel PanelOne = new JPanel();
 		PanelOne.setBackground(c);
 		return PanelOne;
+		
+		
 		
 	}
 	
