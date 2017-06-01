@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.text.DefaultCaret;
 
 import asgn2Customers.Customer;
+import asgn2Exceptions.CustomerException;
+import asgn2Exceptions.LogHandlerException;
+import asgn2Exceptions.PizzaException;
 import asgn2Pizzas.Pizza;
 import asgn2Restaurant.PizzaRestaurant;
 
@@ -35,6 +38,9 @@ import javax.swing.*;
  *
  */
 public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionListener {
+	private File file;
+	private String filename;
+	
 	private static final long serialVersionUID = -7031008862559936404L;
 	public static final int WIDTH = 600;
 	public static final int HEIGHT = 600;
@@ -72,8 +78,8 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	
 	private JButton UploadButton;
 	private JButton ClearButton;
-	private JButton NextButton;
-	private JButton PreviousButton;
+	private JButton CustomerInfoButton;
+	private JButton PizzaInfoButton;
 	
 	
 	
@@ -191,13 +197,14 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		 PanelThree.add(ClearButton);
 		 ClearButton.addActionListener(this);
 		 
-		 NextButton = new JButton("<<");
-		 PanelThree.add(NextButton);
-		 NextButton.addActionListener(this);
+		 CustomerInfoButton = new JButton("Get Customer Info");
+		 PanelThree.add(CustomerInfoButton);
+		 CustomerInfoButton.addActionListener(this);
 		 
-		 PreviousButton = new JButton(">>");
-		 PanelThree.add(PreviousButton);
-		 PreviousButton.addActionListener(this);
+		 PizzaInfoButton = new JButton("Get Pizza Info");
+		 PanelThree.add(PizzaInfoButton);
+		 PizzaInfoButton.addActionListener(this);
+		 
 		 
 		 HeadingOne.setFont(new Font("Comic Sans ms",Font.BOLD,16));
 		 HeadingTwo.setFont(new Font("Comic Sans ms",Font.BOLD,16));
@@ -237,9 +244,17 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	}
 	
 	private void ReadData(){
-		//reading and showing the data from the file 
+
+		this.restaurant = new PizzaRestaurant();
+		
+		try {
+			restaurant.processLog(filename);
+		} catch (CustomerException | PizzaException | LogHandlerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 				
-			}
+	}
 	
 	
 	@Override
@@ -256,17 +271,18 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		Object src=e.getSource();
 		if(src==UploadButton){
 			JFileChooser fileChooser = new JFileChooser();
-			int returnValue =fileChooser.showOpenDialog(this);
-			if(returnValue== JFileChooser.APPROVE_OPTION){
-				File file =fileChooser.getSelectedFile();
-				String fileName = file.getAbsolutePath();
-			}else if(src==ClearButton){
+			int returnValue = fileChooser.showOpenDialog(this);
+			if(returnValue == JFileChooser.APPROVE_OPTION){
+				file = fileChooser.getSelectedFile();
+				filename = file.getAbsolutePath();
+				this.ReadData();
+			}else if(src == ClearButton){
 				// CLEAR FUCTION
 				ClearFuction();
-			}else if(src==NextButton){
+			}else if(src == CustomerInfoButton){
 				// Next FUCTION
 				NextFuction();
-			}else if(src==PreviousButton){
+			}else if(src == PizzaInfoButton){
 				// previous RUCTION
 				PreviousFuction();
 			}else if (returnValue == JFileChooser.CANCEL_OPTION){}
