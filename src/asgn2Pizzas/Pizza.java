@@ -43,13 +43,17 @@ public abstract class Pizza  {
 	 */
 	public Pizza(int quantity, LocalTime orderTime, LocalTime deliveryTime, String type, double price) throws PizzaException{
 		
-		//TODO: Exceptions
-		
-		this.quantity = quantity;
-		this.orderTime = orderTime;
-		this.deliveryTime = deliveryTime;
-		this.type = type;
-		this.price = price;
+		if (quantity < 1 || quantity > 10) {
+			throw new PizzaException("The number of pizzas ordered must be between 1 and 10 (inclusive)");
+		} else if (orderTime.compareTo(LocalTime.parse("23:00:00")) > 0 || orderTime.compareTo(LocalTime.parse("23:00:00")) < 0) {
+			throw new PizzaException("Orders must be between 7pm and 11pm");
+		} else {
+			this.quantity = quantity;
+			this.orderTime = orderTime;
+			this.deliveryTime = deliveryTime;
+			this.type = type;
+			this.price = price;
+		}
 		
 	}
 
