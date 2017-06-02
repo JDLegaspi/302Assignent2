@@ -7,9 +7,13 @@ import javax.swing.*;
 
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 import javax.swing.JPanel;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 
 import asgn2Customers.Customer;
@@ -19,10 +23,10 @@ import asgn2Exceptions.PizzaException;
 import asgn2Pizzas.Pizza;
 import asgn2Restaurant.PizzaRestaurant;
 
-import javax.swing.JFrame;
 
-import java.awt.*;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JFileChooser;
+
 
 
 /**
@@ -42,8 +46,8 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	private String filename;
 	
 	private static final long serialVersionUID = -7031008862559936404L;
-	public static final int WIDTH = 600;
-	public static final int HEIGHT = 600;
+	public static final int WIDTH = 1000;
+	public static final int HEIGHT = 1000;
 	private JPanel PanelOne;
 	private JPanel PanelTwo;
 	private JPanel PanelThree;
@@ -78,8 +82,11 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	
 	private JButton UploadButton;
 	private JButton ClearButton;
-	private JButton NextButton;
-	private JButton PreviousButton;
+	private JButton CalcualteButton;
+	
+	
+	private JTextArea Results; 
+	private String ClearText = "";
 	
 	
 	
@@ -104,13 +111,13 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		setLayout(new BorderLayout());
 		//Panel related code will go here
 		PanelOne = createPanel(Color.WHITE); 
-		this.getContentPane().add(PanelOne,BorderLayout.CENTER); 
+		this.getContentPane().add(PanelOne,BorderLayout.WEST); 
 		
 		PanelTwo = createPanel(Color.CYAN); 
-		this.getContentPane().add(PanelTwo,BorderLayout.EAST); 
+		this.getContentPane().add(PanelTwo,BorderLayout.CENTER); 
 		
 		PanelThree = createPanel(Color.RED); 
-		this.getContentPane().add(PanelThree,BorderLayout.WEST);
+		this.getContentPane().add(PanelThree,BorderLayout.NORTH);
 		
 		
 		this.setVisible(true);
@@ -120,20 +127,20 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		
 		PanelOne.setLayout(new BoxLayout(PanelOne, BoxLayout.Y_AXIS));
 		PanelTwo.setLayout(new BoxLayout(PanelTwo, BoxLayout.Y_AXIS));
-		PanelThree.setLayout(new BoxLayout(PanelThree, BoxLayout.Y_AXIS));
+		PanelThree.setLayout(new BoxLayout(PanelThree, BoxLayout.X_AXIS));
 		
 		//Lables  For Customer 
 		
 		HeadingOne = new JLabel("Customer Information");
 		HeadingTwo = new JLabel("Customer Resutlts");
 		
-		CustomerNameLabel = new JLabel("Customer Name:");
-		CustomerMobileLabel = new JLabel("Customer Mobie:");
-		CustomerTypeLabel = new JLabel("Customer Type:");
-		CustomerLocationLabel = new JLabel("Customer Location:");
-		CustomerDistanceLabel = new JLabel("Customer Distance:");
+		CustomerNameLabel = new JLabel("Name | ");
+		CustomerMobileLabel = new JLabel("Mobie | ");
+		CustomerTypeLabel = new JLabel("Type |");
+		CustomerLocationLabel = new JLabel("Location |");
+		CustomerDistanceLabel = new JLabel("Distance |");
 
-		PanelOne.add(HeadingOne);
+
 		PanelOne.add(CustomerNameLabel);
 		PanelOne.add(CustomerMobileLabel);
 		PanelOne.add(CustomerTypeLabel);
@@ -142,11 +149,11 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		
 		
 		//Labels for pizza 
-		PizzaTypeLabel = new JLabel("Pizza Type:");
-		PizzaQuantityLabel = new JLabel("Pizza Quantity");
-		PizzaOrderPriceLabel = new JLabel("Pizza Order Price:");
-		PizzaOrderCostLabel = new JLabel("Pizza Order Cost:");
-		PizzaOrderProfitLabel = new JLabel("Pizza Order Profit:");
+		PizzaTypeLabel = new JLabel("Pizza Type | ");
+		PizzaQuantityLabel = new JLabel("Quantity|");
+		PizzaOrderPriceLabel = new JLabel("Order Price | ");
+		PizzaOrderCostLabel = new JLabel("Order Cost |");
+		PizzaOrderProfitLabel = new JLabel("Profit |");
 
 		
 		PanelOne.add(PizzaTypeLabel);
@@ -157,7 +164,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		
 		
 		//Lables  For Customer Results 
-		ResultCustomerNameLabel = new JLabel("");
+		/*ResultCustomerNameLabel = new JLabel("");
 		ResultCustomerMobileLabel = new JLabel("");
 		ResultCustomerTypeLabel = new JLabel("");
 		ResultCustomerLocationLabel = new JLabel("");
@@ -183,6 +190,9 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		PanelTwo.add(ResultPizzaOrderPriceLabel);
 		PanelTwo.add(ResultPizzaOrderCostLabel);
 		PanelTwo.add(ResultPizzaOrderProfitLabel);
+		*/
+		Results = new JTextArea(2,1);
+		PanelTwo.add(Results);
 		
 		
 		
@@ -197,13 +207,13 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		 PanelThree.add(ClearButton);
 		 ClearButton.addActionListener(this);
 		 
-		 NextButton = new JButton(">>");
-		 PanelThree.add(NextButton);
-		 NextButton.addActionListener(this);
+		
 		 
-		 PreviousButton = new JButton("<<");
-		 PanelThree.add(PreviousButton);
-		 PreviousButton.addActionListener(this);
+		 CalcualteButton = new JButton(">>");
+		 PanelThree.add(CalcualteButton);
+		 CalcualteButton.addActionListener(this);
+		 
+		
 		 
 		 
 		 HeadingOne.setFont(new Font("Comic Sans ms",Font.BOLD,16));
@@ -229,31 +239,9 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		
 	}
 	
-	private void ClearFuction(){
-		//clear the function
-		
-	}
 	
-	private void NextFuction(){
-		//move the content forward one index 
-				
-			}
-	private void PreviousFuction(){
-		//move the content back one index 
-		
-	}
 	
-	private void ReadData(){
-
-		this.restaurant = new PizzaRestaurant();
-		try {
-			restaurant.processLog(filename);
-		} catch (CustomerException | PizzaException | LogHandlerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-				
-	}
+	
 	
 	
 	@Override
@@ -274,7 +262,20 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 			if(returnValue == JFileChooser.APPROVE_OPTION){
 				file = fileChooser.getSelectedFile();
 				filename = file.getAbsolutePath();
-				this.ReadData();
+				//
+				Scanner scan;
+				try {
+					scan = new Scanner (new FileReader(file));
+					while(scan.hasNextLine() ==true){
+					
+						String Content = scan.nextLine ();
+						Results.insert(Content +"\n", 0);
+					}
+					
+				} catch (FileNotFoundException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				
 				try {
 					this.ResultCustomerNameLabel.setText(restaurant.getCustomerByIndex(0).getName());
@@ -300,16 +301,16 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 				
 			}else if(src == ClearButton){
 				// CLEAR FUCTION
-				ClearFuction();
-			}else if(src == NextButton){
+				//JOSE PLEASE DO THIS 
+				
+			}else if(src == CalcualteButton){
 				// Next FUCTION
-				NextFuction();
-			}else if(src == PreviousButton){
-				// previous RUCTION
-				PreviousFuction();
+				//JOSE PLEASE DO THIS 
+				
 			}else if (returnValue == JFileChooser.CANCEL_OPTION){}
 			
 		}
+	
 	}
 		
 		
