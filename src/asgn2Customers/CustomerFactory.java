@@ -30,13 +30,13 @@ public class CustomerFactory {
 	 */
 	public static Customer getCustomer(String customerCode, String name, String mobileNumber, int locationX,  int locationY) throws CustomerException{
 		
-		if (customerCode == "PUC") {
+		if (customerCode.equals("PUC")) {
 			PickUpCustomer customer = new PickUpCustomer(name, mobileNumber, locationX, locationY);
 			return customer;
-		} else if (customerCode == "DVC") {
+		} else if (customerCode.equals("DVC")) {
 			DriverDeliveryCustomer customer = new DriverDeliveryCustomer(name, mobileNumber, locationX, locationY);
 			return customer;
-		} else if (customerCode == "DNC"){
+		} else if (customerCode.equals("DNC")){
 			DroneDeliveryCustomer customer = new DroneDeliveryCustomer(name, mobileNumber, locationX, locationY);
 			return customer;
 		} else {
