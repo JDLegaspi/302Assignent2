@@ -36,12 +36,13 @@ public class VegetarianPizza extends Pizza {
 	public VegetarianPizza(int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException {
 		
 		super(quantity, orderTime, deliveryTime, IDENTITY, PRICE);
+		//saying what Toppings are on the pizza 
 		listOfToppings.add(PizzaTopping.TOMATO);
 		listOfToppings.add(PizzaTopping.CHEESE);
 		listOfToppings.add(PizzaTopping.EGGPLANT);
 		listOfToppings.add(PizzaTopping.MUSHROOM);
 		listOfToppings.add(PizzaTopping.CAPSICUM);
-		
+		// This is going though and getting the cost of the pizzas if there are multiple
 		for (int i = 0; i < quantity; i++) {
 			price += 10.00;
 			for (PizzaTopping topping : listOfToppings) {
