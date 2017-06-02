@@ -24,19 +24,10 @@ public class LogHandlerCustomerTests {
 		
 		Customer customer;
 		
-		@Before
-		public void createClass() throws CustomerException {
-			try {
-				customer = LogHandler.createCustomer("19:00:00,19:20:00,Casey Jones,0123456789,DVC,5,5,PZV,2");
-			} catch (LogHandlerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
 		@Test
 		//tests to see if customer name is correct
-		public void getCustomerName() throws CustomerException {
+		public void getCustomerName() throws CustomerException, LogHandlerException {
+			customer = LogHandler.createCustomer("19:00:00,19:20:00,Casey Jones,0123456789,DVC,5,5,PZV,2");
 			assertEquals("Casey Jones", customer.getName());
 		}
 }

@@ -15,7 +15,7 @@ import asgn2Exceptions.PizzaException;
  *
  */
 public class MargheritaPizza extends Pizza {
-	private static final double COST = 8.00; 
+	private static final double PRICE = 8.00; 
 	private static final String IDENTITY = "Margherita";
 
 	
@@ -36,12 +36,17 @@ public class MargheritaPizza extends Pizza {
 	 *
 	 */
 	public MargheritaPizza(int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException {
-		// TO DO
-		//TO FIX 
-		super(quantity, orderTime, deliveryTime, IDENTITY, COST );
+		super(quantity, orderTime, deliveryTime, IDENTITY, PRICE );
 		listOfToppings.add(PizzaTopping.TOMATO);
 		listOfToppings.add(PizzaTopping.CHEESE);
-
+		
+		for (int i = 0; i < quantity; i++) {
+			price += 8.00;
+			for (PizzaTopping topping : listOfToppings) {
+				cost += topping.getCost();
+			}
+		}
+		
 	}	
 }
 
