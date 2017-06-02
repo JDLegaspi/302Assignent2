@@ -260,6 +260,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear data?", "Clear", JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION)
 	            {
+					restaurant.resetDetails();
 					restaurant = null;
 					
 					this.ResultCustomerNameLabel.setText("");
