@@ -19,7 +19,7 @@ import asgn2Exceptions.CustomerException;
  */
 public class CustomerTests {
 	// TO DO
-	//Check Get name 
+	// Check if the name is returning correctly 
 	@Test 
 	 public  void TestName() throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("PUC", "name", "0412731942", 0, 0);
@@ -27,37 +27,39 @@ public class CustomerTests {
 	}
 	
 
-	//mobile 
+	// Check if the mobile is returning correctly 
 	@Test 
 	 public  void TestMobile () throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("PUC", "name", "0412731942", 0, 0);
 		assertEquals("0412731942", customer.getMobileNumber());
 	}
 	
-	//location Testing 
+	// Check if the location x is returning correctly 
 	
 	@Test
 	 public  void TestLocationX() throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("PUC", "name", "0412731942", 0, 0);
 		assertEquals(0, customer.getLocationX());
 	}
+	// Check if the location Y is returning correctly 
 	@Test
 	 public  void TestLocationY() throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("PUC", "name", "0412731942", 0, 0);
 		assertEquals(0, customer.getLocationY());
 	}
-	
+	// Check if the type is returning correctly 
 	@Test 
 	 public  void TestTypePickUp() throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("PUC", "name", "0412731942", 0, 0);
 		assertEquals("Pick-up Customer", customer.getCustomerType());
 	}
+	// Check if the type is returning correctly 
 	@Test 
 	 public  void TestTypeDrone() throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("DNC", "name", "0412731942", 5, 2);
 		assertEquals("Drove Delivery Customer", customer.getCustomerType());
 	}
-	
+	// Check if the type is returning correctly 
 	@Test 
 	 public  void TestTypeDrive() throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("DVC", "name", "0412731942", 5, 2);
