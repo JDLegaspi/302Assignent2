@@ -61,7 +61,6 @@ public class PizzaRestaurant {
 		customers = LogHandler.populateCustomerDataset(filename);
 		pizzas = LogHandler.populatePizzaDataset(filename);
 		
-		//think about when the output is true or false
 		if (customers.isEmpty() || pizzas.isEmpty()) {
 			return false;
 		} else {
