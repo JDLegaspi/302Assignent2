@@ -7,20 +7,10 @@ import javax.swing.*;
 
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.text.DecimalFormat;
-import java.util.Scanner;
-
 import javax.swing.JPanel;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultCaret;
-
-import asgn2Customers.Customer;
 import asgn2Exceptions.CustomerException;
 import asgn2Exceptions.LogHandlerException;
 import asgn2Exceptions.PizzaException;
-import asgn2Pizzas.Pizza;
 import asgn2Restaurant.PizzaRestaurant;
 
 
@@ -54,7 +44,6 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	
 	
 	private JLabel HeadingOne;
-	private JLabel HeadingTwo;
 	
 	
 	private JLabel CustomerNameLabel;
@@ -84,14 +73,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	private JButton ClearButton;
 	private JButton CalculateButton;
 	private JButton DistanceButton;
-	private JButton CustomerButton;
-	
-	private JTextArea Results; 
-	private String ClearText = "";
-	
-	
-	
-	
+	private JButton CustomerButton;	
 	
 	private PizzaRestaurant restaurant;
 	
@@ -316,7 +298,12 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 				
 				if (customerIDInput != null) {
 					int customerID = Integer.parseInt(customerIDInput);
-					displayCustomerData(customerID);
+					
+					if (customerID < 0 || customerID > restaurant.getNumCustomerOrders() - 1) {
+						JOptionPane.showMessageDialog(null, "Customer ID not valid");
+					} else {
+						displayCustomerData(customerID);
+					}
 				}
 			}
 			
