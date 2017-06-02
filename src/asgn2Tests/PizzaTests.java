@@ -1,11 +1,14 @@
 package asgn2Tests;
 
+import static org.junit.Assert.assertEquals;
+
 import java.time.LocalTime;
 
 import org.junit.Test;
 
 import asgn2Exceptions.PizzaException;
 import asgn2Pizzas.MeatLoversPizza;
+import asgn2Pizzas.Pizza;
 
 /**
  * A class that that tests the asgn2Pizzas.MargheritaPizza, asgn2Pizzas.VegetarianPizza, asgn2Pizzas.MeatLoversPizza classes. 
@@ -36,6 +39,20 @@ public class PizzaTests {
 	@Test (expected=PizzaException.class)
 	 public  void TestDeliveryTimeover () throws PizzaException{	
 		MeatLoversPizza pizzaorder = new MeatLoversPizza(5, LocalTime.of(19, 30, 00), LocalTime.of(18, 40, 59, 11001)); 
+	}
+	//test get cost 
+	@Test 
+	 public  void TestGetCost () throws PizzaException{	 // !! Not rueting right. 
+		MeatLoversPizza pizzaorder = new MeatLoversPizza(1, LocalTime.of(19, 30, 00), LocalTime.of(18, 40, 59, 11001)); 
+		double costOfPizza = pizzaorder.getCostPerPizza();
+		assertEquals(5, costOfPizza, 0);
+	}
+	
+	@Test 
+	 public  void TestGetOrderCost () throws PizzaException{	 // !! Not rueting right. 
+		MeatLoversPizza pizzaorder = new MeatLoversPizza(1, LocalTime.of(19, 30, 00), LocalTime.of(18, 40, 59, 11001)); 
+		double costOfPizza = pizzaorder.getOrderCost();
+		assertEquals(5, costOfPizza, 0);
 	}
 
 }
