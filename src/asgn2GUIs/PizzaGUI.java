@@ -53,7 +53,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	private JPanel PanelThree;
 	
 	
-	private JLabel HeadingOne ;
+	private JLabel HeadingOne;
 	private JLabel HeadingTwo;
 	
 	
@@ -227,17 +227,12 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		JPanel PanelOne = new JPanel();
 		PanelOne.setBackground(c);
 		return PanelOne;
-		
-		
-		
 	}
 
 	@Override
 	public void run() {
 		// TO DO
 		createGUI();
-		
-		
 	}
 
 
@@ -272,31 +267,36 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
                 {
                     displayCustomerData(0);
                 }
-				
 			} 
 			
 		} else if (src == ClearButton) {
 
-			restaurant = null;
-			
-			this.ResultCustomerNameLabel.setText("");
-			this.ResultCustomerTypeLabel.setText("");
-			this.ResultCustomerMobileLabel.setText("");
-			this.ResultCustomerLocationLabel.setText("");
-			this.ResultCustomerDistanceLabel.setText("");
-			
-			this.ResultPizzaTypeLabel.setText("");
-			this.ResultPizzaQuantityLabel.setText("");
-			this.ResultPizzaOrderCostLabel.setText("");
-			this.ResultPizzaOrderPriceLabel.setText("");
-			this.ResultPizzaOrderProfitLabel.setText("");			
+			if (restaurant != null) {
+				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear data?", "Clear", JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION)
+	            {
+					restaurant = null;
+					
+					this.ResultCustomerNameLabel.setText("");
+					this.ResultCustomerTypeLabel.setText("");
+					this.ResultCustomerMobileLabel.setText("");
+					this.ResultCustomerLocationLabel.setText("");
+					this.ResultCustomerDistanceLabel.setText("");
+					
+					this.ResultPizzaTypeLabel.setText("");
+					this.ResultPizzaQuantityLabel.setText("");
+					this.ResultPizzaOrderCostLabel.setText("");
+					this.ResultPizzaOrderPriceLabel.setText("");
+					this.ResultPizzaOrderProfitLabel.setText("");
+	            }		
+			}
 			
 		} else if (src == CalculateButton) {
 			
 			if (restaurant == null) {
 				JOptionPane.showMessageDialog(null, "Please load a restaurant file");
 			} else {
-				JOptionPane.showMessageDialog(null, "Total Profit Made: $" + restaurant.getTotalProfit());
+				JOptionPane.showMessageDialog(null, "Total Profit Made Today: $" + restaurant.getTotalProfit());
 			}
 		
 		} else if (src == DistanceButton) {
@@ -304,7 +304,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 			if (restaurant == null) {
 				JOptionPane.showMessageDialog(null, "Please load a restaurant file");
 			} else {
-				JOptionPane.showMessageDialog(null, "Total Distance Travelled: " + restaurant.getTotalDeliveryDistance() + " units travelled");
+				JOptionPane.showMessageDialog(null, "Total Distance Travelled Today: " + ((double)Math.round(restaurant.getTotalDeliveryDistance()*100)/100) + " units travelled");
 			}
 			
 		} else if (src == CustomerButton) {
