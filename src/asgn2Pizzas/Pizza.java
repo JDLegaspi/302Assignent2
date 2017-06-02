@@ -45,9 +45,9 @@ public abstract class Pizza  {
 		
 		if (quantity < 1 || quantity > 10) {
 			throw new PizzaException("The number of pizzas ordered must be between 1 and 10 (inclusive)");
-		} else if (orderTime.compareTo(LocalTime.parse("23:00:00")) > 0 || orderTime.compareTo(LocalTime.parse("23:00:00")) < 0) {
+		} /*else if (orderTime.compareTo(LocalTime.parse("23:00:00")) > 0 || orderTime.compareTo(LocalTime.parse("23:00:00")) < 0) {
 			throw new PizzaException("Orders must be between 7pm and 11pm");
-		} else {
+		}*/ else {
 			this.quantity = quantity;
 			this.orderTime = orderTime;
 			this.deliveryTime = deliveryTime;

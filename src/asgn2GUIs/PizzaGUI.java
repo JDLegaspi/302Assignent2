@@ -164,7 +164,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		
 		
 		//Lables  For Customer Results 
-		/*ResultCustomerNameLabel = new JLabel("");
+		ResultCustomerNameLabel = new JLabel("");
 		ResultCustomerMobileLabel = new JLabel("");
 		ResultCustomerTypeLabel = new JLabel("");
 		ResultCustomerLocationLabel = new JLabel("");
@@ -190,9 +190,8 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		PanelTwo.add(ResultPizzaOrderPriceLabel);
 		PanelTwo.add(ResultPizzaOrderCostLabel);
 		PanelTwo.add(ResultPizzaOrderProfitLabel);
-		*/
-		Results = new JTextArea(2,1);
-		PanelTwo.add(Results);
+		//Results = new JTextArea(2,1);
+		//PanelTwo.add(Results);
 		
 		
 		
@@ -257,13 +256,30 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	public void actionPerformed(ActionEvent e) {
 		Object src=e.getSource();
 		if(src==UploadButton){
+			restaurant = new PizzaRestaurant();
+						
 			JFileChooser fileChooser = new JFileChooser();
 			int returnValue = fileChooser.showOpenDialog(this);
 			if(returnValue == JFileChooser.APPROVE_OPTION){
+				
 				file = fileChooser.getSelectedFile();
 				filename = file.getAbsolutePath();
+				
+				try {
+					restaurant.processLog(filename);
+				} catch (CustomerException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (PizzaException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (LogHandlerException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				
 				//
-				Scanner scan;
+				/*Scanner scan;
 				try {
 					scan = new Scanner (new FileReader(file));
 					while(scan.hasNextLine() ==true){
@@ -275,7 +291,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 				} catch (FileNotFoundException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
-				}
+				}*/
 				
 				try {
 					this.ResultCustomerNameLabel.setText(restaurant.getCustomerByIndex(0).getName());

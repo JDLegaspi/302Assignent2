@@ -30,22 +30,17 @@ public class CustomerFactory {
 	 */
 	public static Customer getCustomer(String customerCode, String name, String mobileNumber, int locationX,  int locationY) throws CustomerException{
 		
-		if (customerCode != "PUC" && customerCode != "DVC" && customerCode != "DNC") {
-			throw new CustomerException("Customer delivery code is invalid");
+		if (customerCode == "PUC") {
+			PickUpCustomer customer = new PickUpCustomer(name, mobileNumber, locationX, locationY);
+			return customer;
+		} else if (customerCode == "DVC") {
+			DriverDeliveryCustomer customer = new DriverDeliveryCustomer(name, mobileNumber, locationX, locationY);
+			return customer;
+		} else if (customerCode == "DNC"){
+			DroneDeliveryCustomer customer = new DroneDeliveryCustomer(name, mobileNumber, locationX, locationY);
+			return customer;
 		} else {
-			
-			if (customerCode == "PUC") {
-				PickUpCustomer customer = new PickUpCustomer(name, mobileNumber, locationX, locationY);
-				return customer;
-			} else if (customerCode == "DVC") {
-				DriverDeliveryCustomer customer = new DriverDeliveryCustomer(name, mobileNumber, locationX, locationY);
-				return customer;
-			} else {
-				DroneDeliveryCustomer customer = new DroneDeliveryCustomer(name, mobileNumber, locationX, locationY);
-				return customer;
-			}
-			
-			
+			throw new CustomerException("Customer delivery code is invalid");
 		}
 		
 	}

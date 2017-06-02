@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import asgn2Customers.Customer;
 import asgn2Customers.CustomerFactory;
 import asgn2Exceptions.CustomerException;
@@ -39,10 +41,14 @@ public class LogHandler {
 		
 		ArrayList<Customer> customerArrayList = new ArrayList<Customer>();
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(filename))){
-			String line;
-			while ((line = br.readLine()) != null) {
+		Scanner scan;
+		try{
+			scan = new Scanner (new FileReader(filename));
+			while(scan.hasNextLine() == true){
+				
+				String line = scan.nextLine ();
 				customerArrayList.add(createCustomer(line));
+				
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -64,10 +70,14 @@ public class LogHandler {
 
 		ArrayList<Pizza> pizzaArrayList = new ArrayList<Pizza>();
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(filename))){
-			String line;
-			while ((line = br.readLine()) != null) {
+		Scanner scan;
+		try{
+			scan = new Scanner (new FileReader(filename));
+			while(scan.hasNextLine() == true){
+				
+				String line = scan.nextLine ();
 				pizzaArrayList.add(createPizza(line));
+				
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -94,6 +104,7 @@ public class LogHandler {
 			String[] customerInfo  = line.split(",");
 			
 			String customerCode = customerInfo[4];
+			
 			String name = customerInfo[2];
 			String mobileNumber = customerInfo[3];
 			int locationX = Integer.parseInt(customerInfo[5]);
@@ -119,16 +130,16 @@ public class LogHandler {
 		if (!line.matches(".+,.+,.+,.+,.+,.+,.+,.+,.+")) {
 			throw new LogHandlerException("Line does not match format required");
 		} else {
-		
 			String[] customerInfo  = line.split(",");
-	
+
 			String pizzaCode = customerInfo[7];
+			System.out.println(customerInfo[7]);
 			int pizzaQuantity = Integer.parseInt(customerInfo[8]);
 			LocalTime orderTime = LocalTime.parse(customerInfo[0]);
 			LocalTime deliveryTime = LocalTime.parse(customerInfo[1]);
 			
-			
-			Pizza pizza = PizzaFactory.getPizza(pizzaCode, pizzaQuantity, orderTime, deliveryTime);		
+			System.out.println(pizzaCode);
+			Pizza pizza = PizzaFactory.getPizza(pizzaCode, pizzaQuantity, orderTime, deliveryTime);
 			
 			return pizza;
 		}
