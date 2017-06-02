@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import org.junit.Before;
 import org.junit.Test;
 
+import asgn2Customers.Customer;
 import asgn2Exceptions.CustomerException;
 import asgn2Exceptions.LogHandlerException;
 import asgn2Exceptions.PizzaException;
@@ -27,17 +28,34 @@ public class RestaurantCustomerTests {
 	
 	@Before
 	//test to see if both ArrayLists are initialised and no errors occur
-	public void testPizzaRestaurant() {
-		restaurant = new PizzaRestaurant();
-	}
-	
-	@Test
 	//test to see if both datasets are not null, false if any of them fail
-	public void testProcessLog() throws URISyntaxException, CustomerException, PizzaException, LogHandlerException {
+	public void testPizzaRestaurant() throws CustomerException, PizzaException, LogHandlerException, URISyntaxException {
+		restaurant = new PizzaRestaurant();
 		Path path = Paths.get(LogHandlerCustomerTests.class.getResource(".").toURI());
 		String logFilepath = path.getParent().getParent() + "\\" + "logs" + "\\" + "20170101.txt";
 		
 		assertEquals(true, restaurant.processLog(logFilepath));
 	}
+	
+	@Test
+	//test to see if all expected objects have been made
+	public void testGetNumCustomers() {
+		assertEquals(3, restaurant.getNumCustomerOrders());
+	}
+	
+	@Test
+	//test if customerArrayList has been populated
+	public void testGetCustomerByIndex() throws CustomerException {
+		Customer customer = restaurant.getCustomerByIndex(0);
+		assertEquals("Casey Jones", customer.getName());
+	}
+	
+	@Test (expected = CustomerException.class)
+	//test if getCustomerByIndex throws out of bounds error
+	public void testGetCustomerByIndexError() throws CustomerException {
+		Customer customer = restaurant.getCustomerByIndex(900000);
+		assertEquals("Casey Jones", customer.getName());
+	}
+
 
 }
