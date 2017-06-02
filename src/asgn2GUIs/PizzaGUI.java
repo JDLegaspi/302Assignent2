@@ -267,7 +267,11 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 					e2.printStackTrace();
 				}
 				
-				
+				int reply = JOptionPane.showConfirmDialog(null, "Would you like do display the data for the first customer?", "Display Data?", JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION)
+                {
+                    displayCustomerData(0);
+                }
 				
 			} 
 			
