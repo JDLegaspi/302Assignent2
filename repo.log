@@ -1,0 +1,349 @@
+commit ab0e4ea44e56b46f658179f8c042f1c6e5fb59bc
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 21:07:02 2017 +1000
+
+    finished foreal
+
+commit 6947bdc125215578f4ffe4ecba63da6ffbcc1e2e
+Merge: 33de577 f10c7a8
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 21:04:36 2017 +1000
+
+    finished assignment
+
+commit 33de577a5aac718f229395aa2d3644f7d1bc7f96
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 21:03:27 2017 +1000
+
+    finished assignment
+
+commit f10c7a884bd426402b53ec2c7f37501298f8c0a0
+Merge: dd13bf6 6bfb644
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 20:34:47 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit 6bfb6448acfe5a1073b9275836d729ed23ea5873
+Merge: 1d00f14 5e25c70
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 20:32:44 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit 1d00f142436fa62d6120aa64fbf5a82c56000e5a
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 20:32:39 2017 +1000
+
+    RestauratnCustomer tests
+
+commit dd13bf65a6d7136c6b343c32278355cc10afab28
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 20:24:42 2017 +1000
+
+    Comments for testing.
+
+commit 5e25c701a40973473518c89e804003e9e9d09e97
+Merge: a0b59b2 e513f42
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 20:07:05 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit a0b59b296dcfe8455404a1508f5df60112d57996
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 20:06:58 2017 +1000
+
+    test
+
+commit e513f42d9d3c8dbb1de3e7d106149799d7301546
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 20:05:39 2017 +1000
+
+    Updates RestaurantsTest
+
+commit d3b59f7f271719fbc35da04e25174264023b511c
+Merge: ff8cdcb 24ed5f2
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 20:02:30 2017 +1000
+
+    resolved merge conflicts
+
+commit ff8cdcb00d05ee0d24863789cdfaee333c7db8d7
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 20:01:47 2017 +1000
+
+    Created tests for LogHandler
+
+commit 24ed5f2c554031cab0551ef6bea01dd52275fcec
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 19:58:32 2017 +1000
+
+    Comments done
+
+commit 7c80e0c8318bf4b03ca0b53f07f94208206f8589
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 19:56:06 2017 +1000
+
+    Comments
+
+commit a1f9e8bc48251f419050c0fe573799d07996934f
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 19:15:04 2017 +1000
+
+    Pizza Testing
+
+commit c0fa44835fc1b51f030914b4965d1e1fcb8164d9
+Merge: 2e01217 dbb1742
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 18:58:21 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit 2e01217c1629a9fd6c6169449e4798ae1d742266
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 18:58:14 2017 +1000
+
+    no message
+
+commit dbb1742eead1a4fd1b77de3264a0652c11322f70
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 18:51:11 2017 +1000
+
+    Fixed some issues and made some more tests
+
+commit 9481a58d7b3af31a450b7f06285482f7a733cc2f
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 17:28:24 2017 +1000
+
+    Finalised GUI
+
+commit f4e98d29439a4fc4e6b0df14a736294798c2acf1
+Merge: a6f0b7f f1c4f19
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 17:18:49 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit a6f0b7fd4233c1bc41def61b1db54c3e445543fe
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 17:18:42 2017 +1000
+
+    Testing 2
+
+commit f1c4f1978ee8cbd12bd0a36adc21605c76117895
+Merge: 210e781 5ec77c3
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 17:02:50 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit 210e781023818203a0783a6d44c76fcfcb0d5201
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 17:02:34 2017 +1000
+
+    Created "Display Data?" option
+
+commit 5ec77c3f4cd9b2f1895cf7ccdd7c2a11a1522dd6
+Merge: c094d05 2f66658
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 17:02:07 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit c094d05b77e1e85bf25be73c2dfcdea1febfdce8
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 17:02:01 2017 +1000
+
+    Testing
+
+commit 2f666581f9fbcb6048de6bb8c6fd37afc97fd800
+Merge: 21127eb 951d88e
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 16:58:33 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit 21127ebc94292ebcd8e362b88c8043c4d5c27c9f
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 16:58:21 2017 +1000
+
+    Created UI functionality
+
+commit 951d88e737865373a777789938e6ba6e116fe80a
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 16:46:02 2017 +1000
+
+    Recovered tests
+
+commit dfd0709ca817c8711785fd8b3930ef0d1ef35847
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 16:09:22 2017 +1000
+
+    Fixed Pizza stuff, wrote another test
+
+commit 8a571b4d99614524cb2a738bf1c3e4551c58071f
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 15:38:50 2017 +1000
+
+    wrote some tests for CustomerFactory and PizzaFactory
+
+commit ac56d830669bc5b7cf568cc28df9054cf0c0e940
+Merge: ebc5d66 0842fbc
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 14:24:16 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit ebc5d66b562f16a842f419ce2a4ec10cb080b2c4
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Fri Jun 2 14:24:00 2017 +1000
+
+    added some exceptions
+
+commit 0842fbcace037a7a75839baceefc8a5c013f855d
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri Jun 2 12:43:30 2017 +1000
+
+    GUI 95% done
+    please do clear and calculate buttons.
+
+commit 4d7e16375eca94246f5b726f219278c3bcffcae6
+Author: Daniel <jdalegaspi@gmail.com>
+Date:   Thu Jun 1 20:06:43 2017 +1000
+
+    Did GUI stuff
+
+commit 9ed14a667d4dc2ba6f07144bb5ab6ef029052ce8
+Author: Daniel <jdalegaspi@gmail.com>
+Date:   Thu Jun 1 19:31:38 2017 +1000
+
+    Made some changes to PizzaGUI
+
+commit d41d81bced2c5204b22b1cdf9bcfee66f9fc1b64
+Author: Daniel <jdalegaspi@gmail.com>
+Date:   Thu Jun 1 19:10:06 2017 +1000
+
+    Updates classes to include exceptions
+
+commit c91b9d887e3e0f3e57f2ca55abca67f6845d8062
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Wed May 31 15:45:54 2017 +1000
+
+    Fixed GUI Still need to  add in reading data and another faction
+
+commit 23c3868faa18e738ef3a0541d1bbf4f7b7c5cc2a
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Wed May 31 15:06:31 2017 +1000
+
+    Guy Complete - only need to add in reading the data and learning and next and previous, all the methods are ready just empty.
+
+commit 4112e2bed08e2751e5ca2eed6d4bd94528771162
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Tue May 30 11:33:33 2017 +1000
+
+    FInished all restaurant package code
+
+commit b8569edb79841c8668076e146452b95326734dda
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Tue May 30 11:32:56 2017 +1000
+
+    Finished Pizza package classes
+
+commit 83d30307893fa7d38a71469f9816ba131707c1bb
+Merge: f8eb924 ef71bda
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Mon May 29 15:28:03 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit f8eb9243f90c44341113bd81759af2526d38ea19
+Author: JDLEGASPI-PC\JD Legaspi <jdalegaspi@gmail.com>
+Date:   Mon May 29 15:21:46 2017 +1000
+
+    Finished customer class, started restaurant class
+
+commit ef71bda382a021a4a7236010ace3ac11eeb5dcb1
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Mon May 29 14:03:02 2017 +1000
+
+    Fixed Spelling - starting pizza class now.
+
+commit 475dae518bc3477374c00dbf69b24a642d5ed6ac
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Mon May 29 13:41:44 2017 +1000
+
+    Finished Margarita, Venetian, Meatlovers
+
+commit 5692cd3729124c0203c04006f06caa3392c53960
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Fri May 26 14:51:27 2017 +1000
+
+    Edited Pizza -Still more to go
+
+commit ac2fd9b0d72be42d4bf0c34042b6cec786e3f4c9
+Merge: 05b9c11 c3cf199
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Wed May 24 09:34:45 2017 +1000
+
+    Merge branch 'master' of https://github.com/JDLegaspi/302Assignent2
+
+commit c3cf199ba996d689608148fe2a07a5fb4fe7fd2f
+Author: Daniel <jdalegaspi@gmail.com>
+Date:   Mon May 8 11:58:23 2017 +1000
+
+    [To Finish] Created CustomerFactory class
+
+commit 05b9c110fc98bea5ff1e1600b56d88bd1c729707
+Author: Okara Harvey <okaraemma@me.com>
+Date:   Mon May 8 11:20:37 2017 +1000
+
+    Margarita Pizza Exceptions.
+
+commit 9718264cea88714d4da9bdd503fc52a0e662ba6c
+Author: Daniel <jdalegaspi@gmail.com>
+Date:   Mon May 8 10:48:15 2017 +1000
+
+    created Customer class
+
+commit 7dbe90423b6813ca34e96d1fe9842db7ba03687c
+Author: alan <awoodley@qut.edu.au>
+Date:   Fri May 5 17:04:42 2017 +1000
+
+    Fixed typos
+
+commit 6c318c6355efac47ebaa1b4fbebad97b232c2e2e
+Author: alan <awoodley@qut.edu.au>
+Date:   Fri May 5 17:02:09 2017 +1000
+
+    Changed PizzaResturant.processLog to say 'true if the file was process correctly'
+
+commit d209e252f0d37ea6593fdbaf85b7eeb820a79667
+Author: alan <awoodley@qut.edu.au>
+Date:   Fri May 5 16:52:17 2017 +1000
+
+    Updating log files to remove empty final line
+
+commit 434d3ada012f0e03d37b9527d8f9bdff01ca572b
+Author: alan <awoodley@qut.edu.au>
+Date:   Tue Apr 25 18:36:28 2017 +1000
+
+    .
+
+commit f748592b2f1fe58edc493dfacce042ef85c91244
+Author: alan <awoodley@qut.edu.au>
+Date:   Tue Apr 25 18:05:34 2017 +1000
+
+    .
+
+commit dfba34718a2fd75e1bc3721b8770c7466003ab56
+Author: alan <awoodley@qut.edu.au>
+Date:   Tue Apr 25 18:04:54 2017 +1000
+
+    .
+
+commit e951c1e8b6ea69b11df52b6f3f175173c920375e
+Author: awoodley <a.woodley@qut.edu.au>
+Date:   Tue Apr 25 06:32:36 2017 +0000
+
+    .
