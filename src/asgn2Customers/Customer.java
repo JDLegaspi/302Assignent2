@@ -11,7 +11,8 @@ import asgn2Exceptions.CustomerException;
  * @author Person B
 */
 public abstract class Customer {
-
+	
+	// Setting the variable names up 
 	private String name;
 	private String mobileNumber;
 	private int locationX;
@@ -37,14 +38,15 @@ public abstract class Customer {
 	 */
 	public Customer(String name, String mobileNumber, int locationX, int locationY, String type) throws CustomerException{
 
-		
-			this.name = name;
-		
+		// Setting the name
+		this.name = name;
+		//thowing exception if the number is to long or short and hads a 0 
 		if (mobileNumber.matches("0[0-9]{9}")) {
 			this.mobileNumber = mobileNumber;
 		} else {
 			throw new CustomerException("Phone number must be 10 digits and start with 0");
 		}
+		//setting the location and type 
 		this.locationX = locationX;
 		this.locationY = locationY;
 		this.type = type;
@@ -56,6 +58,7 @@ public abstract class Customer {
 	 * @return The Customer's name.
 	 */
 	public final String getName(){
+		//returns the name as a string
 		return this.name;
 	}
 	
@@ -64,6 +67,7 @@ public abstract class Customer {
 	 * @return The Customer's mobile number.
 	 */
 	public final String getMobileNumber(){
+		//Returns the customers mobile number as a string
 		return this.mobileNumber;
 	}
 
@@ -73,6 +77,7 @@ public abstract class Customer {
 	 * @return A human understandable description of the Customer's type.
 	 */
 	public final String getCustomerType(){
+		// returns the description as a string
 		return this.type;
 	}
 	
@@ -82,6 +87,7 @@ public abstract class Customer {
 	 * @return The Customer's X location
 	 */
 	public final int getLocationX(){
+		//returns the location as an int 
 		return this.locationX;
 	}
 
@@ -91,6 +97,7 @@ public abstract class Customer {
 	 * @return The Customer's Y location
 	 */
 	public final int getLocationY(){
+		//returns the location as an int 
 		return this.locationY;
 	}
 

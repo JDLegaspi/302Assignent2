@@ -11,7 +11,7 @@ import asgn2Exceptions.CustomerException;
  *
  */
 public class DroneDeliveryCustomer extends Customer {
-
+//setting the locations 
 	private int locationX;
 	private int locationY;
 
@@ -33,7 +33,7 @@ public class DroneDeliveryCustomer extends Customer {
 	public DroneDeliveryCustomer(String name, String mobileNumber, int locationX, int locationY) throws CustomerException {
 
 		super(name, mobileNumber, locationX, locationY, "Drove Delivery Customer");
-
+		// setting the locations from the  order for the drone
 		this.locationX = locationX;
 		this.locationY = locationY;		
 	}
@@ -48,7 +48,6 @@ public class DroneDeliveryCustomer extends Customer {
 	public double getDeliveryDistance() {
 
 		double distance;
-
 		//simplified Manhattan distance formula, since shop location is 0,0
 		distance = Math.sqrt( (this.locationX * this.locationX) + (this.locationY * this.locationY) );
 
