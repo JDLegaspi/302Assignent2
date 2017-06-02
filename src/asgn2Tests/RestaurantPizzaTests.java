@@ -17,5 +17,4 @@ import asgn2Pizzas.MeatLoversPizza;
 public class RestaurantPizzaTests {
 	// TO DO
 	
-	@Test 
 }
