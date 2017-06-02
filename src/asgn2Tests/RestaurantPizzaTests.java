@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +34,29 @@ public class RestaurantPizzaTests {
 		String logFilepath = path.getParent().getParent() + "\\" + "logs" + "\\" + "20170101.txt";
 		
 		assertEquals(true, restaurant.processLog(logFilepath));
+	}
+	
+	@Test
+	public void testGetPizzaByIndex() throws PizzaException {
+		assertEquals("Vegetarian", restaurant.getPizzaByIndex(0).getPizzaType());
+	}
+	
+	@Test (expected = PizzaException.class)
+	//test getPizzaByIndex out of bounds
+	public void testGetPizzaByIndexError() throws PizzaException {
+		restaurant.getPizzaByIndex(12222220);
+	}
+	
+	@Test
+	//test getting delivery distance
+	public void testGetTotalDeliveryDistance() throws PizzaException {
+		Assert.assertEquals(15.0, restaurant.getTotalDeliveryDistance(), 0.00001);
+	}
+	
+	@Test
+	//test get total profit
+	public void testGetProfit() {
+		assertEquals(restaurant.getTotalProfit(), 151.50, 0.001);
 	}
 	
 }

@@ -18,7 +18,7 @@ import asgn2Exceptions.CustomerException;
  */
 public class CustomerFactoryTests {
 	//TODO
-	@Test (expected=CustomerException.class) // !!
+	@Test (expected=CustomerException.class)// !!
 	 public  void TestNameException () throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("PUC", "abcdefghijklmnopqurstuvwxyz", "0412731942", 0, 0);
 	}

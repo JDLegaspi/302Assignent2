@@ -3,6 +3,7 @@ package asgn2Pizzas;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import asgn2Exceptions.PizzaException;
+import static java.time.temporal.ChronoUnit.MINUTES;
 
 
 /**
@@ -45,6 +46,8 @@ public abstract class Pizza  {
 			throw new PizzaException("The number of pizzas ordered must be between 1 and 10 (inclusive)");
 		} else if (orderTime.compareTo(LocalTime.parse("19:00:00")) < 0 || orderTime.compareTo(LocalTime.parse("23:00:00")) > 0) {
 			throw new PizzaException("Orders must be between 7pm and 11pm");
+		} else if (MINUTES.between(orderTime, deliveryTime) > 60) {
+			throw new PizzaException("Orders must not take more than 1 hour to deliver");
 		} else {
 			this.quantity = quantity;
 			this.type = type;

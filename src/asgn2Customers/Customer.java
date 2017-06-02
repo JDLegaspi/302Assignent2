@@ -39,16 +39,27 @@ public abstract class Customer {
 	public Customer(String name, String mobileNumber, int locationX, int locationY, String type) throws CustomerException{
 
 		// Setting the name
-		this.name = name;
-		//thowing exception if the number is to long or short and hads a 0 
+		
+		if (name.trim().length() == 0 || name.length() > 20) {
+			throw new CustomerException("Name is invalid");
+		} else {
+			this.name = name;
+		}
+		
+
+		//throw error if number doesn't match pattern required
 		if (mobileNumber.matches("0[0-9]{9}")) {
 			this.mobileNumber = mobileNumber;
 		} else {
 			throw new CustomerException("Phone number must be 10 digits and start with 0");
 		}
-		//setting the location and type 
-		this.locationX = locationX;
-		this.locationY = locationY;
+		
+		if (locationX > 10 || locationX < -10 || locationY > 10 || locationY < -10) {
+			throw new CustomerException("Customer lives too far away");
+		} else {
+			this.locationX = locationX;
+			this.locationY = locationY;
+		}
 		this.type = type;
 		
 	}

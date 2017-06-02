@@ -19,7 +19,7 @@ import asgn2Exceptions.CustomerException;
  */
 public class CustomerTests {
 	// TO DO
-	//Check Get anme 
+	//Check Get name 
 	@Test 
 	 public  void TestName() throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("PUC", "name", "0412731942", 0, 0);

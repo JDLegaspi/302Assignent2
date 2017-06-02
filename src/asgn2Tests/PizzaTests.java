@@ -40,7 +40,7 @@ public class PizzaTests {
 	}
 	@Test (expected=PizzaException.class)
 	 public  void TestDeliveryTimeover () throws PizzaException{	
-		MeatLoversPizza pizzaorder = new MeatLoversPizza(5, LocalTime.of(19, 30, 00), LocalTime.of(18, 40, 59, 11001)); 
+		MeatLoversPizza pizzaorder = new MeatLoversPizza(5, LocalTime.of(19, 30, 00), LocalTime.of(21, 40, 59, 11001)); 
 	}
 	//test get cost 
 	@Test 
