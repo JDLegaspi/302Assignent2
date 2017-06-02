@@ -133,12 +133,10 @@ public class LogHandler {
 			String[] customerInfo  = line.split(",");
 
 			String pizzaCode = customerInfo[7];
-			System.out.println(customerInfo[7]);
 			int pizzaQuantity = Integer.parseInt(customerInfo[8]);
 			LocalTime orderTime = LocalTime.parse(customerInfo[0]);
 			LocalTime deliveryTime = LocalTime.parse(customerInfo[1]);
 			
-			System.out.println(pizzaCode);
 			Pizza pizza = PizzaFactory.getPizza(pizzaCode, pizzaQuantity, orderTime, deliveryTime);
 			
 			return pizza;

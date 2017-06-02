@@ -17,7 +17,7 @@ public enum PizzaTopping {
 	PEPPERONI(1),
 	CAPSICUM(1.2),
 	MUSHROOM(2),
-	EGGPLANT(0.8); 
+	EGGPLANT(0.8);
 	
 	private double cost;
 	

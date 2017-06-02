@@ -17,7 +17,7 @@ import asgn2Exceptions.PizzaException;
 public class VegetarianPizza extends Pizza {
 	private static final double COST = 10.00; 
 	private static final String IDENTITY = "Vegetarian";
-
+	
 	/**
 	 * 
 	 *  This class represents a vegetarian pizza made at the  Pizza Palace restaurant. The vegetarian pizza has certain
@@ -35,14 +35,15 @@ public class VegetarianPizza extends Pizza {
 	 */
 	public VegetarianPizza(int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException {
 		
-		super(quantity, deliveryTime, orderTime, IDENTITY, COST );
+		super(quantity, orderTime, deliveryTime, IDENTITY, COST);
 		listOfToppings.add(PizzaTopping.TOMATO);
 		listOfToppings.add(PizzaTopping.CHEESE);
 		listOfToppings.add(PizzaTopping.EGGPLANT);
 		listOfToppings.add(PizzaTopping.MUSHROOM);
 		listOfToppings.add(PizzaTopping.CAPSICUM);
-		}
-		
 		
 	}
+		
+		
+}
 

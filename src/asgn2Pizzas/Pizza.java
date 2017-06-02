@@ -2,6 +2,8 @@ package asgn2Pizzas;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
+
 import asgn2Exceptions.PizzaException;
 
 
@@ -22,7 +24,7 @@ public abstract class Pizza  {
 	private String type;
 	
 	protected double cost; 
-	protected ArrayList<PizzaTopping> listOfToppings;
+	protected LinkedList<PizzaTopping> listOfToppings = new LinkedList<PizzaTopping>();
 	
 	/**
 	 *  This class represents a pizza produced at the Pizza Palace restaurant.  A detailed description of the class's fields
@@ -70,7 +72,6 @@ public abstract class Pizza  {
 		for(PizzaTopping Value : listOfToppings){
 			this.cost = Value.getCost() + this.cost;
 		}
-	
 	
 	}
 			

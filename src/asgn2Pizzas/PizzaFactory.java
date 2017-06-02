@@ -29,9 +29,6 @@ public class PizzaFactory {
 	 * */
 	public static Pizza getPizza(String pizzaCode, int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException{
 		
-		System.out.println(pizzaCode);
-		System.out.print(pizzaCode.equals("PZV"));
-		
 		if (pizzaCode.equals("PZV")) {
 			VegetarianPizza pizza = new VegetarianPizza(quantity, orderTime, deliveryTime);
 			return pizza;

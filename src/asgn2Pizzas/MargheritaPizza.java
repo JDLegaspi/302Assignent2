@@ -38,11 +38,11 @@ public class MargheritaPizza extends Pizza {
 	public MargheritaPizza(int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException {
 		// TO DO
 		//TO FIX 
-			super(quantity, deliveryTime, orderTime, IDENTITY, COST );
-			listOfToppings.add(PizzaTopping.TOMATO);
-			listOfToppings.add(PizzaTopping.CHEESE);
-	
-		}	
+		super(quantity, orderTime, deliveryTime, IDENTITY, COST );
+		listOfToppings.add(PizzaTopping.TOMATO);
+		listOfToppings.add(PizzaTopping.CHEESE);
+
+	}	
 }
 
 	

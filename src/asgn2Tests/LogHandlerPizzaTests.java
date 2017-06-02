@@ -29,7 +29,7 @@ public class LogHandlerPizzaTests {
 	@Before
 	public void createClass() throws PizzaException {
 		try {
-			pizza = LogHandler.createPizza("19:00:00,19:20:00,Casey Jones,0123456789,DVC,5,5,PZV,2");
+			pizza = LogHandler.createPizza("21:00:00,21:35:00,Oroku Saki,0111222333,PUC,0,0,PZL,3");
 		} catch (LogHandlerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,6 +39,6 @@ public class LogHandlerPizzaTests {
 	@Test
 	//tests to see if pizza type is correct
 	public void getPizzaType() throws CustomerException {
-		assertEquals("PZV", pizza.getPizzaType());
+		assertEquals("Meat Lovers", pizza.getPizzaType());
 	}
 }
