@@ -47,12 +47,18 @@ public class PizzaTests {
 		double costOfPizza = pizzaorder.getCostPerPizza();
 		assertEquals(5, costOfPizza, 0);
 	}
-	
 	@Test 
 	 public  void TestGetOrderCost () throws PizzaException{	 // !! Not rueting right. 
 		MeatLoversPizza pizzaorder = new MeatLoversPizza(1, LocalTime.of(19, 30, 00), LocalTime.of(18, 40, 59, 11001)); 
 		double costOfPizza = pizzaorder.getOrderCost();
 		assertEquals(5, costOfPizza, 0);
+	}
+	
+	@Test 
+	 public  void TestGetOrderprice () throws PizzaException{	 // !! Not rueting right. 
+		MeatLoversPizza pizzaorder = new MeatLoversPizza(1, LocalTime.of(19, 30, 00), LocalTime.of(18, 40, 59, 11001)); 
+		double expectedPrice = 12.0;
+		assertEquals(expectedPrice,  pizzaorder.getOrderPrice());
 	}
 
 }
