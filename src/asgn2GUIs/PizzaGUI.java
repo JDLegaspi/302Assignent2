@@ -32,20 +32,21 @@ import javax.swing.JFileChooser;
  *
  */
 public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionListener {
+	// setting up the variables and the Java Gui elements
 	private File file;
 	private String filename;
 	
 	private static final long serialVersionUID = -7031008862559936404L;
+	//Initialize the frame height
 	public static final int WIDTH = 610;
 	public static final int HEIGHT = 300;
+	//Initialize the panels 
 	private JPanel PanelOne;
 	private JPanel PanelTwo;
 	private JPanel PanelThree;
 	
-	
+	//Initialize Jlables
 	private JLabel HeadingOne;
-	
-	
 	private JLabel CustomerNameLabel;
 	private JLabel CustomerMobileLabel;
 	private JLabel CustomerTypeLabel;
@@ -56,7 +57,6 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	private JLabel PizzaOrderPriceLabel;
 	private JLabel PizzaOrderCostLabel;
 	private JLabel PizzaOrderProfitLabel;
-	
 	
 	private JLabel ResultCustomerNameLabel;
 	private JLabel ResultCustomerMobileLabel;
@@ -69,6 +69,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	private JLabel ResultPizzaOrderCostLabel;
 	private JLabel ResultPizzaOrderProfitLabel;
 	
+	//Initialize the buttons 
 	private JButton UploadButton;
 	private JButton ClearButton;
 	private JButton CalculateButton;
@@ -89,10 +90,13 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	}
 	
 	private void createGUI() { 
-		setSize(WIDTH, HEIGHT);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new BorderLayout());
 		//Panel related code will go here
+		setSize(WIDTH, HEIGHT);
+		//The height and width
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// This is setting the closing function 
+		setLayout(new BorderLayout());
+		// setting the positions of the panels and what color they appear. 
 		PanelOne = createPanel(Color.WHITE); 
 		this.getContentPane().add(PanelOne,BorderLayout.WEST); 
 		
@@ -102,20 +106,18 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		PanelThree = createPanel(Color.WHITE); 
 		this.getContentPane().add(PanelThree,BorderLayout.NORTH);
 		
-		
+		// Setting the panels to be seen and painting them to the screen 
 		this.setVisible(true);
 		repaint();
 		
 		
-		
+		// This is setting the content in the panels to either go vertiaclly or horizontaly. 
 		PanelOne.setLayout(new BoxLayout(PanelOne, BoxLayout.Y_AXIS));
 		PanelTwo.setLayout(new BoxLayout(PanelTwo, BoxLayout.Y_AXIS));
 		PanelThree.setLayout(new BoxLayout(PanelThree, BoxLayout.X_AXIS));
 		
-		//Lables  For Customer 
-		
+		//Labels  For Customer 
 		HeadingOne = new JLabel("Customer Information");
-		
 		CustomerNameLabel = new JLabel("Name :  ");
 		CustomerMobileLabel = new JLabel("Mobie :  ");
 		CustomerTypeLabel = new JLabel("Type : ");
@@ -215,6 +217,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	public void run() {
 		// TO DO
 		createGUI();
+		// ruffning the gui 
 	}
 
 
@@ -223,14 +226,14 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		Object src=e.getSource();
 		if(src == UploadButton){
 			restaurant = new PizzaRestaurant();
-						
+			// this is choosing the file 
 			JFileChooser fileChooser = new JFileChooser();
 			int returnValue = fileChooser.showOpenDialog(this);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
-				
+				// this is where you get the path of the file
 				file = fileChooser.getSelectedFile();
 				filename = file.getAbsolutePath();
-				
+				// Trying to catch any exceptions when the file is being selected. 
 				try {
 					restaurant.processLog(filename);
 				} catch (CustomerException e2) {
@@ -243,7 +246,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-				
+				// this is where the display button is engauged.
 				int reply = JOptionPane.showConfirmDialog(null, "Would you like do display the data for the first customer?", "Display Data?", JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION)
                 {
@@ -252,7 +255,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 			} 
 			
 		} else if (src == ClearButton) {
-
+					// this is where the clear button resets the text
 			if (restaurant != null) {
 				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear data?", "Clear", JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION)
@@ -274,16 +277,19 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 			}
 			
 		} else if (src == CalculateButton) {
-			
+			// this is where the calualte buttons functions are 
 			if (restaurant == null) {
+				//if no file is selected show error message
 				JOptionPane.showMessageDialog(null, "Please load a restaurant file");
 			} else {
+				// show the tial profit on a pup up 
 				JOptionPane.showMessageDialog(null, "Total Profit Made Today: $" + restaurant.getTotalProfit());
 			}
 		
 		} else if (src == DistanceButton) {
-			
+			// Calculate distance 
 			if (restaurant == null) {
+				//if no file is selected show error message
 				JOptionPane.showMessageDialog(null, "Please load a restaurant file");
 			} else {
 				JOptionPane.showMessageDialog(null, "Total Distance Travelled Today: " + ((double)Math.round(restaurant.getTotalDeliveryDistance()*100)/100) + " units travelled");
@@ -292,11 +298,15 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		} else if (src == CustomerButton) {
 			
 			if (restaurant == null) {
+				//if no file is selected show error message
 				JOptionPane.showMessageDialog(null, "Please load a restaurant file");
 			} else {
+				
+				// selects the number typed into the box and finds the corelating number in the log file and shows it on the screen. 
 				String customerIDInput = JOptionPane.showInputDialog("Please select a Customer ID from 0 to " + (restaurant.getNumCustomerOrders() - 1));
 				
 				if (customerIDInput != null) {
+					// show an error message if the number is invalid. 
 					int customerID = Integer.parseInt(customerIDInput);
 					
 					if (customerID < 0 || customerID > restaurant.getNumCustomerOrders() - 1) {
@@ -313,6 +323,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		
 	private void displayCustomerData(int customerID) {
 		try {
+			//Try Showing the data from the logfiles and catch any problems for the customer information 
 			this.ResultCustomerNameLabel.setText(restaurant.getCustomerByIndex(customerID).getName());
 			this.ResultCustomerTypeLabel.setText(restaurant.getCustomerByIndex(customerID).getCustomerType());
 			this.ResultCustomerMobileLabel.setText(restaurant.getCustomerByIndex(customerID).getMobileNumber());
@@ -324,6 +335,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		}
 		
 		try {
+			//Try Showing the data from the logfiles and catch any problems for the pizza information 
 			this.ResultPizzaTypeLabel.setText(restaurant.getPizzaByIndex(customerID).getPizzaType());
 			this.ResultPizzaQuantityLabel.setText(Integer.toString(restaurant.getPizzaByIndex(customerID).getQuantity()));
 			this.ResultPizzaOrderCostLabel.setText(Double.toString(restaurant.getPizzaByIndex(customerID).getOrderCost()));

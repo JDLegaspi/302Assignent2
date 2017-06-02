@@ -40,7 +40,7 @@ public abstract class Pizza  {
 	 * 
 	 */
 	public Pizza(int quantity, LocalTime orderTime, LocalTime deliveryTime, String type, double price) throws PizzaException{
-		
+		//setting the parameters and cheking for exceptions 
 		if (quantity < 1 || quantity > 10) {
 			throw new PizzaException("The number of pizzas ordered must be between 1 and 10 (inclusive)");
 		} else if (orderTime.compareTo(LocalTime.parse("19:00:00")) < 0 || orderTime.compareTo(LocalTime.parse("23:00:00")) > 0) {
@@ -62,7 +62,7 @@ public abstract class Pizza  {
 	public final void calculateCostPerPizza(){
 		
 		this.cost = 0; 
-		
+		// finding the vale of the pizzas by getting the cost of the toppings
 		for(PizzaTopping Value : listOfToppings){
 			this.cost = Value.getCost() + this.cost;
 		}
@@ -117,7 +117,7 @@ public abstract class Pizza  {
 	 * @return  Returns the profit made by the restaurant on the order which is the order price minus the order cost.
 	 */
 	public final double getOrderProfit(){
-
+		// this is finding the profit by finding the cost to make the pizza and how much they sell it for and getting the difference. 
 		return ((this.price * this.quantity) - (this.cost * this.quantity));
 
 	}

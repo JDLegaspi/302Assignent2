@@ -33,7 +33,7 @@ public class DriverDeliveryCustomer extends Customer {
 	public DriverDeliveryCustomer(String name, String mobileNumber, int locationX, int locationY) throws CustomerException {
 		
 		super(name, mobileNumber, locationX, locationY, "Deliver Delivery Customer");
-		
+		// setting the location from the order. 
 		this.locationX = locationX;
 		this.locationY = locationY;
 		
@@ -49,10 +49,8 @@ public class DriverDeliveryCustomer extends Customer {
 	public double getDeliveryDistance() {
 
 		double distance;
-
 		//simplified Manhattan distance formula, since shop location is 0,0
 		distance = Math.abs( this.locationX + this.locationY );
-
 		return distance;
 	}
 

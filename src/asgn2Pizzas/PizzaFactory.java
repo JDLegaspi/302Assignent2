@@ -28,7 +28,7 @@ public class PizzaFactory {
 	 * @return A valid Pizza object using the specified parameters 
 	 * */
 	public static Pizza getPizza(String pizzaCode, int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException{
-		
+		// setting up the pizza codes for the differnt types of pizzas there are. 
 		if (pizzaCode.equals("PZV")) {
 			VegetarianPizza pizza = new VegetarianPizza(quantity, orderTime, deliveryTime);
 			return pizza;
@@ -39,6 +39,7 @@ public class PizzaFactory {
 			MeatLoversPizza pizza = new MeatLoversPizza(quantity, orderTime, deliveryTime);
 			return pizza;
 		} else {
+			// if the pizza code doesnt match any of the above it will throw an exception 
 			throw new PizzaException("Pizza code is invalid");
 		}
 		

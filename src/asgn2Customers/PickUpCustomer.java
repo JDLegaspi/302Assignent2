@@ -27,7 +27,7 @@ public class PickUpCustomer extends Customer {
 	 * 
 	 */
 	public PickUpCustomer(String name, String mobileNumber, int locationX,  int locationY) throws CustomerException {
-
+		// setting the delivery method name. 
 		super(name, mobileNumber, locationX, locationY, "Pick-up Customer");
 
 	}
@@ -39,6 +39,7 @@ public class PickUpCustomer extends Customer {
 	 */
 	@Override
 	public double getDeliveryDistance() {
+		// no calulations as the pizza is being picked up from the store. 
 		return 0;
 	}
 

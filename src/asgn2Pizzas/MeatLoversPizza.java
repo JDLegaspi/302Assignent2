@@ -14,6 +14,7 @@ import asgn2Exceptions.PizzaException;
  *
  */
 public class MeatLoversPizza extends Pizza {
+	// setting the price of the pizza and assigning it a human recognizable name
 	private static final double PRICE = 12.00; 
 	private static final String IDENTITY = "Meat Lovers";
 
@@ -35,12 +36,13 @@ public class MeatLoversPizza extends Pizza {
 	 */
 	public MeatLoversPizza(int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException {
 		super(quantity, orderTime, deliveryTime, IDENTITY, PRICE );
+		//Setting the  pizza toppings. 
 		listOfToppings.add(PizzaTopping.TOMATO);
 		listOfToppings.add(PizzaTopping.CHEESE);
 		listOfToppings.add(PizzaTopping.BACON);
 		listOfToppings.add(PizzaTopping.SALAMI);
 		listOfToppings.add(PizzaTopping.PEPPERONI);
-		
+		// This is going though and getting the cost of the pizzas if there are multiple
 		for (int i = 0; i < quantity; i++) {
 			price += 12.00;
 			for (PizzaTopping topping : listOfToppings) {

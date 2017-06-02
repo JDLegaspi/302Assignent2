@@ -29,7 +29,7 @@ public class CustomerFactory {
 	 * @throws CustomerException if the customerCode is not one of the three valid codes listed in Section 5.3 of the Assignment Specification. 
 	 */
 	public static Customer getCustomer(String customerCode, String name, String mobileNumber, int locationX,  int locationY) throws CustomerException{
-		
+		// setting up the Pizza codes and returning them to the order. 
 		if (customerCode.equals("PUC")) {
 			PickUpCustomer customer = new PickUpCustomer(name, mobileNumber, locationX, locationY);
 			return customer;
@@ -40,6 +40,7 @@ public class CustomerFactory {
 			DroneDeliveryCustomer customer = new DroneDeliveryCustomer(name, mobileNumber, locationX, locationY);
 			return customer;
 		} else {
+			//throws a new exception  if the delievery code doesn not match any of the ones above. 
 			throw new CustomerException("Customer delivery code is invalid");
 		}
 		
