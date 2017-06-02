@@ -37,7 +37,8 @@ public abstract class Customer {
 	 */
 	public Customer(String name, String mobileNumber, int locationX, int locationY, String type) throws CustomerException{
 
-		this.name = name;
+		
+			this.name = name;
 		
 		if (mobileNumber.matches("0[0-9]{9}")) {
 			this.mobileNumber = mobileNumber;
