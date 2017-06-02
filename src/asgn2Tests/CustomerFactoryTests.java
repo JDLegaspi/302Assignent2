@@ -55,11 +55,6 @@ public class CustomerFactoryTests {
 	 public  void TestTypeException() throws CustomerException{	
 		Customer customer = CustomerFactory.getCustomer("AMC", "name", "0412731942", 5, 2);
 	}
-	// Test if the delivery location is incorrect. 
-	@Test (expected=CustomerException.class)//!!
-	 public  void TestTDeliveryAtStore() throws CustomerException{	
-		Customer customer = CustomerFactory.getCustomer("DNC", "name", "0412731942", 0, 0);
-	}
 	
 
 }

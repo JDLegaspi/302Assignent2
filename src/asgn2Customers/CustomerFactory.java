@@ -30,7 +30,7 @@ public class CustomerFactory {
 	 */
 	public static Customer getCustomer(String customerCode, String name, String mobileNumber, int locationX,  int locationY) throws CustomerException{
 		// setting up the Pizza codes and returning them to the order. 
-		if (customerCode.equals("PUC")) {
+		if (customerCode.equals("PUC") || (locationX == 0 && locationY == 0)) {
 			PickUpCustomer customer = new PickUpCustomer(name, mobileNumber, locationX, locationY);
 			return customer;
 		} else if (customerCode.equals("DVC")) {
