@@ -88,17 +88,21 @@ public class LogHandler {
 	 */
 	public static Customer createCustomer(String line) throws CustomerException, LogHandlerException{
 
-		String[] customerInfo  = line.split(",");
-		
-		String customerCode = customerInfo[4];
-		String name = customerInfo[2];
-		String mobileNumber = customerInfo[3];
-		int locationX = Integer.parseInt(customerInfo[5]);
-		int locationY = Integer.parseInt(customerInfo[6]);
-		
-		Customer customer = CustomerFactory.getCustomer(customerCode, name, mobileNumber, locationX, locationY);
-		
-		return customer;
+		if (!line.matches(".+,.+,.+,.+,.+,.+,.+,.+,.+")) {
+			throw new LogHandlerException("Line does not match format required");
+		} else {
+			String[] customerInfo  = line.split(",");
+			
+			String customerCode = customerInfo[4];
+			String name = customerInfo[2];
+			String mobileNumber = customerInfo[3];
+			int locationX = Integer.parseInt(customerInfo[5]);
+			int locationY = Integer.parseInt(customerInfo[6]);
+			
+			Customer customer = CustomerFactory.getCustomer(customerCode, name, mobileNumber, locationX, locationY);
+			
+			return customer;
+		}
 
 	}
 	
@@ -112,17 +116,22 @@ public class LogHandler {
 	 */
 	public static Pizza createPizza(String line) throws PizzaException, LogHandlerException{
 		
-		String[] customerInfo  = line.split(",");
-
-		String pizzaCode = customerInfo[7];
-		int pizzaQuantity = Integer.parseInt(customerInfo[8]);
-		LocalTime orderTime = LocalTime.parse(customerInfo[0]);
-		LocalTime deliveryTime = LocalTime.parse(customerInfo[1]);
+		if (!line.matches(".+,.+,.+,.+,.+,.+,.+,.+,.+")) {
+			throw new LogHandlerException("Line does not match format required");
+		} else {
 		
-		
-		Pizza pizza = PizzaFactory.getPizza(pizzaCode, pizzaQuantity, orderTime, deliveryTime);		
-		
-		return pizza;
+			String[] customerInfo  = line.split(",");
+	
+			String pizzaCode = customerInfo[7];
+			int pizzaQuantity = Integer.parseInt(customerInfo[8]);
+			LocalTime orderTime = LocalTime.parse(customerInfo[0]);
+			LocalTime deliveryTime = LocalTime.parse(customerInfo[1]);
+			
+			
+			Pizza pizza = PizzaFactory.getPizza(pizzaCode, pizzaQuantity, orderTime, deliveryTime);		
+			
+			return pizza;
+		}
 	}
 
 }

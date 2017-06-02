@@ -30,10 +30,6 @@ public class CustomerFactory {
 	 */
 	public static Customer getCustomer(String customerCode, String name, String mobileNumber, int locationX,  int locationY) throws CustomerException{
 		
-		if (!mobileNumber.matches("0[0-9]{9}")) {
-			throw new CustomerException("Phone number must be 10 digits and start with 0");
-		}
-
 		if (customerCode != "PUC" && customerCode != "DVC" && customerCode != "DNC") {
 			throw new CustomerException("Customer delivery code is invalid");
 		} else {
