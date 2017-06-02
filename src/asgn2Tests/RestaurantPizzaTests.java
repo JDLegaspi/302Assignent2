@@ -26,16 +26,13 @@ public class RestaurantPizzaTests {
 	
 	@Before
 	//test to see if both ArrayLists are initialised and no errors occur
-	public void testPizzaRestaurant() {
-		restaurant = new PizzaRestaurant();
-	}
-	
-	@Test
 	//test to see if both datasets are not null, false if any of them fail
-	public void testProcessLog() throws URISyntaxException, PizzaException, LogHandlerException, CustomerException {
+	public void testPizzaRestaurant() throws URISyntaxException, CustomerException, PizzaException, LogHandlerException {
+		restaurant = new PizzaRestaurant();
 		Path path = Paths.get(LogHandlerCustomerTests.class.getResource(".").toURI());
 		String logFilepath = path.getParent().getParent() + "\\" + "logs" + "\\" + "20170101.txt";
 		
 		assertEquals(true, restaurant.processLog(logFilepath));
 	}
+	
 }
