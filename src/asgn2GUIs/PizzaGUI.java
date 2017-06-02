@@ -46,8 +46,8 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	private String filename;
 	
 	private static final long serialVersionUID = -7031008862559936404L;
-	public static final int WIDTH = 1000;
-	public static final int HEIGHT = 1000;
+	public static final int WIDTH = 610;
+	public static final int HEIGHT = 300;
 	private JPanel PanelOne;
 	private JPanel PanelTwo;
 	private JPanel PanelThree;
@@ -82,8 +82,9 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	
 	private JButton UploadButton;
 	private JButton ClearButton;
-	private JButton CalcualteButton;
-	
+	private JButton CalculateButton;
+	private JButton DistanceButton;
+	private JButton CustomerButton;
 	
 	private JTextArea Results; 
 	private String ClearText = "";
@@ -99,7 +100,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	 * @param title - The title for the supertype JFrame
 	 */
 	public PizzaGUI(String title) {
-		// TO DO
+
 		 super(title);
 		 
 		
@@ -113,10 +114,10 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		PanelOne = createPanel(Color.WHITE); 
 		this.getContentPane().add(PanelOne,BorderLayout.WEST); 
 		
-		PanelTwo = createPanel(Color.CYAN); 
+		PanelTwo = createPanel(Color.WHITE); 
 		this.getContentPane().add(PanelTwo,BorderLayout.CENTER); 
 		
-		PanelThree = createPanel(Color.RED); 
+		PanelThree = createPanel(Color.WHITE); 
 		this.getContentPane().add(PanelThree,BorderLayout.NORTH);
 		
 		
@@ -132,13 +133,12 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		//Lables  For Customer 
 		
 		HeadingOne = new JLabel("Customer Information");
-		HeadingTwo = new JLabel("Customer Resutlts");
 		
-		CustomerNameLabel = new JLabel("Name | ");
-		CustomerMobileLabel = new JLabel("Mobie | ");
-		CustomerTypeLabel = new JLabel("Type |");
-		CustomerLocationLabel = new JLabel("Location |");
-		CustomerDistanceLabel = new JLabel("Distance |");
+		CustomerNameLabel = new JLabel("Name :  ");
+		CustomerMobileLabel = new JLabel("Mobie :  ");
+		CustomerTypeLabel = new JLabel("Type : ");
+		CustomerLocationLabel = new JLabel("Location : ");
+		CustomerDistanceLabel = new JLabel("Distance : ");
 
 
 		PanelOne.add(CustomerNameLabel);
@@ -149,11 +149,11 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		
 		
 		//Labels for pizza 
-		PizzaTypeLabel = new JLabel("Pizza Type | ");
-		PizzaQuantityLabel = new JLabel("Quantity|");
-		PizzaOrderPriceLabel = new JLabel("Order Price | ");
-		PizzaOrderCostLabel = new JLabel("Order Cost |");
-		PizzaOrderProfitLabel = new JLabel("Profit |");
+		PizzaTypeLabel = new JLabel("Pizza Type :  ");
+		PizzaQuantityLabel = new JLabel("Quantity: ");
+		PizzaOrderPriceLabel = new JLabel("Order Price :  ");
+		PizzaOrderCostLabel = new JLabel("Order Cost : ");
+		PizzaOrderProfitLabel = new JLabel("Profit : ");
 
 		
 		PanelOne.add(PizzaTypeLabel);
@@ -170,7 +170,6 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		ResultCustomerLocationLabel = new JLabel("");
 		ResultCustomerDistanceLabel = new JLabel("");
 
-		PanelTwo.add(HeadingTwo);
 		PanelTwo.add(ResultCustomerNameLabel);
 		PanelTwo.add(ResultCustomerMobileLabel);
 		PanelTwo.add(ResultCustomerTypeLabel);
@@ -206,27 +205,22 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		 PanelThree.add(ClearButton);
 		 ClearButton.addActionListener(this);
 		 
-		
+		 CustomerButton = new JButton("Display Customer by ID");
+		 PanelThree.add(CustomerButton);
+		 CustomerButton.addActionListener(this);
 		 
-		 CalcualteButton = new JButton(">>");
-		 PanelThree.add(CalcualteButton);
-		 CalcualteButton.addActionListener(this);
+		 CalculateButton = new JButton("Total Profit Made");
+		 PanelThree.add(CalculateButton);
+		 CalculateButton.addActionListener(this);
 		 
-		
+		 DistanceButton = new JButton("Total Distance Travelled");
+		 PanelThree.add(DistanceButton);
+		 DistanceButton.addActionListener(this);		
 		 
 		 
 		 HeadingOne.setFont(new Font("Comic Sans ms",Font.BOLD,16));
-		 HeadingTwo.setFont(new Font("Comic Sans ms",Font.BOLD,16));
 		 
-		}
-		
-		
-		//buttons
-		//load 
-		//reset 
-		//
-	
-	
+	}
 
 	 
 	private JPanel createPanel(Color c) {
@@ -237,12 +231,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		
 		
 	}
-	
-	
-	
-	
-	
-	
+
 	@Override
 	public void run() {
 		// TO DO
@@ -255,12 +244,12 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src=e.getSource();
-		if(src==UploadButton){
+		if(src == UploadButton){
 			restaurant = new PizzaRestaurant();
 						
 			JFileChooser fileChooser = new JFileChooser();
 			int returnValue = fileChooser.showOpenDialog(this);
-			if(returnValue == JFileChooser.APPROVE_OPTION){
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				
 				file = fileChooser.getSelectedFile();
 				filename = file.getAbsolutePath();
@@ -278,65 +267,89 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 					e2.printStackTrace();
 				}
 				
-				//
-				/*Scanner scan;
-				try {
-					scan = new Scanner (new FileReader(file));
-					while(scan.hasNextLine() ==true){
-					
-						String Content = scan.nextLine ();
-						Results.insert(Content +"\n", 0);
-					}
-					
-				} catch (FileNotFoundException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}*/
 				
-				try {
-					this.ResultCustomerNameLabel.setText(restaurant.getCustomerByIndex(0).getName());
-					this.ResultCustomerTypeLabel.setText(restaurant.getCustomerByIndex(0).getCustomerType());
-					this.ResultCustomerMobileLabel.setText(restaurant.getCustomerByIndex(0).getMobileNumber());
-					this.ResultCustomerLocationLabel.setText(restaurant.getCustomerByIndex(0).getLocationX() + " , " + restaurant.getCustomerByIndex(0).getLocationY());
-					this.ResultCustomerDistanceLabel.setText(Double.toString(restaurant.getCustomerByIndex(0).getDeliveryDistance()));
-				} catch (CustomerException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				
+			} 
+			
+		} else if (src == ClearButton) {
+
+			restaurant = null;
+			
+			this.ResultCustomerNameLabel.setText("");
+			this.ResultCustomerTypeLabel.setText("");
+			this.ResultCustomerMobileLabel.setText("");
+			this.ResultCustomerLocationLabel.setText("");
+			this.ResultCustomerDistanceLabel.setText("");
+			
+			this.ResultPizzaTypeLabel.setText("");
+			this.ResultPizzaQuantityLabel.setText("");
+			this.ResultPizzaOrderCostLabel.setText("");
+			this.ResultPizzaOrderPriceLabel.setText("");
+			this.ResultPizzaOrderProfitLabel.setText("");			
+			
+		} else if (src == CalculateButton) {
+			
+			if (restaurant == null) {
+				JOptionPane.showMessageDialog(null, "Please load a restaurant file");
+			} else {
+				JOptionPane.showMessageDialog(null, "Total Profit Made: $" + restaurant.getTotalProfit());
+			}
+		
+		} else if (src == DistanceButton) {
+			
+			if (restaurant == null) {
+				JOptionPane.showMessageDialog(null, "Please load a restaurant file");
+			} else {
+				JOptionPane.showMessageDialog(null, "Total Distance Travelled: " + restaurant.getTotalDeliveryDistance() + " units travelled");
+			}
+			
+		} else if (src == CustomerButton) {
+			
+			if (restaurant == null) {
+				JOptionPane.showMessageDialog(null, "Please load a restaurant file");
+			} else {
+				String customerIDInput = JOptionPane.showInputDialog("Please select a Customer ID from 0 to " + (restaurant.getNumCustomerOrders() - 1));
+				
+				if (customerIDInput != null) {
+					int customerID = Integer.parseInt(customerIDInput);
+					displayCustomerData(customerID);
 				}
-				
-				try {
-					this.ResultPizzaTypeLabel.setText(restaurant.getPizzaByIndex(0).getPizzaType());
-					this.ResultPizzaQuantityLabel.setText(Integer.toString(restaurant.getPizzaByIndex(0).getQuantity()));
-					this.ResultPizzaOrderCostLabel.setText(Double.toString(restaurant.getPizzaByIndex(0).getOrderCost()));
-					this.ResultPizzaOrderPriceLabel.setText(Double.toString(restaurant.getPizzaByIndex(0).getOrderPrice()));
-					this.ResultPizzaOrderProfitLabel.setText(Double.toString(restaurant.getPizzaByIndex(0).getOrderProfit()));		
-				} catch (PizzaException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}else if(src == ClearButton){
-				// CLEAR FUCTION
-				//JOSE PLEASE DO THIS 
-				
-			}else if(src == CalcualteButton){
-				// Next FUCTION
-				//JOSE PLEASE DO THIS 
-				
-			}else if (returnValue == JFileChooser.CANCEL_OPTION){}
+			}
 			
 		}
 	
 	}
 		
+	private void displayCustomerData(int customerID) {
+		try {
+			this.ResultCustomerNameLabel.setText(restaurant.getCustomerByIndex(customerID).getName());
+			this.ResultCustomerTypeLabel.setText(restaurant.getCustomerByIndex(customerID).getCustomerType());
+			this.ResultCustomerMobileLabel.setText(restaurant.getCustomerByIndex(customerID).getMobileNumber());
+			this.ResultCustomerLocationLabel.setText(restaurant.getCustomerByIndex(customerID).getLocationX() + " , " + restaurant.getCustomerByIndex(0).getLocationY());
+			this.ResultCustomerDistanceLabel.setText(Double.toString(restaurant.getCustomerByIndex(customerID).getDeliveryDistance()));
+		} catch (CustomerException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
+		try {
+			this.ResultPizzaTypeLabel.setText(restaurant.getPizzaByIndex(customerID).getPizzaType());
+			this.ResultPizzaQuantityLabel.setText(Integer.toString(restaurant.getPizzaByIndex(customerID).getQuantity()));
+			this.ResultPizzaOrderCostLabel.setText(Double.toString(restaurant.getPizzaByIndex(customerID).getOrderCost()));
+			this.ResultPizzaOrderPriceLabel.setText(Double.toString(restaurant.getPizzaByIndex(customerID).getOrderPrice()));
+			this.ResultPizzaOrderProfitLabel.setText(Double.toString(restaurant.getPizzaByIndex(customerID).getOrderProfit()));		
+		} catch (PizzaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
 		
 		// TODO Auto-generated method stub
 	
 	
 	public static void main(String[] args){
 		JFrame.setDefaultLookAndFeelDecorated(true);
-		 SwingUtilities.invokeLater(new PizzaGUI("Pizza Place"));
+		SwingUtilities.invokeLater(new PizzaGUI("Pizza Place"));
 		
 		
 	}
