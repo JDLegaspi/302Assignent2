@@ -1,19 +1,16 @@
 package asgn2Tests;
 
-import asgn2Pizzas.PizzaFactory;
-
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
 import org.junit.Test;
 
-import asgn2Customers.Customer;
-import asgn2Exceptions.CustomerException;
 import asgn2Exceptions.LogHandlerException;
 import asgn2Exceptions.PizzaException;
-import asgn2Pizzas.MargheritaPizza;
-import asgn2Pizzas.MeatLoversPizza;
-import asgn2Pizzas.VegetarianPizza;
 import asgn2Restaurant.LogHandler;
 import asgn2Pizzas.Pizza;
 
@@ -26,19 +23,51 @@ public class LogHandlerPizzaTests {
 	
 	Pizza pizza;
 	
-	@Before
-	public void createClass() throws PizzaException {
-		try {
-			pizza = LogHandler.createPizza("21:00:00,21:35:00,Oroku Saki,0111222333,PUC,0,0,PZL,3");
-		} catch (LogHandlerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	@Test
+	//tests to see if customer name is correct
+	public void testPizzaCreation() throws LogHandlerException, PizzaException {
+		pizza = LogHandler.createPizza("19:00:00,19:20:00,Casey Jones,0123456789,DVC,5,5,PZV,2");
+		assertEquals("Vegetarian", pizza.getPizzaType());
+		assertEquals(2, pizza.getQuantity());
 	}
 	
 	@Test
-	//tests to see if pizza type is correct
-	public void getPizzaType() throws CustomerException {
-		assertEquals("Meat Lovers", pizza.getPizzaType());
+	//test accepting log file
+	public void testAcceptFile() throws URISyntaxException, PizzaException, LogHandlerException {
+		ArrayList<Pizza> pizzaArrayList = new ArrayList<Pizza>();
+		Path path = Paths.get(LogHandlerPizzaTests.class.getResource(".").toURI());
+		String logFilepath = path.getParent().getParent() + "\\" + "logs" + "\\" + "20170101.txt";
+		pizzaArrayList = LogHandler.populatePizzaDataset(logFilepath);
+		assertEquals("Vegetarian", pizzaArrayList.get(0).getPizzaType());
+		assertEquals(2, pizzaArrayList.get(0).getQuantity());
+	}
+	
+	@Test
+	//test accepting log file once more
+	public void testAcceptFile2() throws URISyntaxException, PizzaException, LogHandlerException {
+		ArrayList<Pizza> pizzaArrayList = new ArrayList<Pizza>();
+		Path path = Paths.get(LogHandlerPizzaTests.class.getResource(".").toURI());
+		String logFilepath = path.getParent().getParent() + "\\" + "logs" + "\\" + "20170101.txt";
+		pizzaArrayList = LogHandler.populatePizzaDataset(logFilepath);
+		assertEquals("Meat Lovers", pizzaArrayList.get(2).getPizzaType());
+		assertEquals(3, pizzaArrayList.get(2).getQuantity());
+	}
+	
+	@Test (expected = LogHandlerException.class)
+	//test Log Handler Exception for semantic error
+	public void textLogHandlerException() throws LogHandlerException, PizzaException {
+		pizza = LogHandler.createPizza("19:00:00,19:20:00,Casey Jones 0123456789,DVC,5,5,PZV,2");
+	}
+	
+	@Test (expected = PizzaException.class)
+	//tests to see if customer exception is thrown from incorrect data
+	public void testPizzaException() throws LogHandlerException, PizzaException {
+		pizza = LogHandler.createPizza("19:00:00,19:20:00,Casey Jones,0123456789,DVC,5,5,wefwefwefwefwefwefwefwefwef,2");
+	}
+	
+	@Test (expected = LogHandlerException.class)
+	//tests to see if customer exception is thrown from incorrect data
+	public void textLogHandlerException2() throws LogHandlerException, PizzaException {
+		pizza = LogHandler.createPizza("sdifuhsiodurfho873e4yto837rgfhoduhf");
 	}
 }
